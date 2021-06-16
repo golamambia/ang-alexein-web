@@ -1,0 +1,277 @@
+<ion-content [fullscreen]="true" [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <app-header></app-header>
+
+  <section class="main_area register_area">
+    <form [formGroup]="registerForm">
+      <div class="container">
+        <div class="register_account_area">
+          <div class="row row-0">
+            <div class="col-lg-5">
+              <div class="register_img_box">
+                <img src="assets/images/register-image.png" alt="register image" title="">
+                <div class="contain_box">
+                  <h1><strong>Register An Account</strong></h1>
+                  <p>We take your privacy seriously. Please refer to our Privacy Policy.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div class="">
+                <div class="customer_info_box">
+                  <h2>Seller Info :</h2>
+                  <div class="row row-0">
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label>full name <sup>*</sup>
+                          <span *ngIf="submitted && f.name.errors">
+                            <span class="min" *ngIf="f.name.errors.required">Name is required</span>
+                          </span>
+                        </label>
+                        <input type="text" formControlName="name" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Enter your full name">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>email address <sup>*</sup>
+                          <span *ngIf="submitted && f.email.errors">
+                            <span class="min" *ngIf="f.email.errors.required">Email is required</span>
+                            <span class="min" *ngIf="f.email.errors.email">Email must be a valid email address</span>
+                          </span>
+                        </label>
+                        <input type="email" formControlName="email" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.email.errors }" placeholder="Email address">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>confirm email address <sup>*</sup>
+                          <span *ngIf="submitted && f.email_confirmation.errors">
+                            <span class="min" *ngIf="f.email_confirmation.errors.required">Confirm email is
+                              required</span>
+                              <span class="min" *ngIf="f.email_confirmation.errors.mustMatch">Email and confirm
+                                email address must match</span>
+                          </span>
+                        </label>
+                        <input type="email" formControlName="email_confirmation" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.email_confirmation.errors }"
+                          placeholder="Confirm email address">
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox"> Receive promotional Emails?
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>password <sup>*</sup>
+                          <span *ngIf="submitted && f.password.errors">
+                            <span class="min" *ngIf="f.password.errors.required">Password is required</span>
+                            <span class="min" *ngIf="f.password.errors.minlength">Password must be at least 6
+                              characters</span>
+                          </span>
+                        </label>
+                        <input type="password" formControlName="password" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>confirm password <sup>*</sup>
+                          <span *ngIf="submitted && f.password_confirmation.errors">
+                            <span class="min" *ngIf="f.password_confirmation.errors.required">Confirm password is
+                              required</span>
+                            <span class="min" *ngIf="f.password_confirmation.errors.mustMatch">Password and confirm
+                              password must match</span>
+                          </span>
+                        </label>
+                        <input type="password" formControlName="password_confirmation" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.password_confirmation.errors }"
+                          placeholder="Confirm password">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>billing address <sup>*</sup>
+                          <span *ngIf="submitted && f.billing_address.errors">
+                            <span class="min" *ngIf="f.billing_address.errors.required">Billing address is
+                              required</span>
+                          </span>
+                        </label>
+                        <input type="text" formControlName="billing_address" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.billing_address.errors }"
+                          placeholder="Enter billing address">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>Country <sup>*</sup>
+                          <span *ngIf="submitted && f.country.errors">
+                            <span class="min" *ngIf="f.country.errors.required">Country is required</span>
+                          </span>
+                        </label>
+                        <input type="text" formControlName="country" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.country.errors }" placeholder="Enter country name">
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label>state <sup>*</sup>
+                          <span *ngIf="submitted && f.state.errors">
+                            <span class="min" *ngIf="f.state.errors.required">State is required</span>
+                          </span>
+                        </label>
+                        <select formControlName="state" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.state.errors }">
+                          <option disabled selected value="">Select State</option>
+                          <option value="West Bengal">West Bengal</option>
+                          <option value="other">Other</option>
+                        </select>
+                        <div class="select_icon"><img src="assets/images/sape3.png" alt="sape" title=""></div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label>city <sup>*</sup>
+                          <span *ngIf="submitted && f.city.errors">
+                            <span class="min" *ngIf="f.city.errors.required">City is required</span>
+                          </span>
+                        </label>
+                        <input type="text" formControlName="city" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.city.errors }" placeholder="Enter city name">
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label>zip code <sup>*</sup>
+                          <span *ngIf="submitted && f.zip.errors">
+                            <span class="min" *ngIf="f.zip.errors.required">Zip is required</span>
+                          </span>
+                        </label>
+                        <input type="text" formControlName="zip" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.zip.errors }" placeholder="Enter zip code">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>date of birth <sup>*</sup>
+                          <span *ngIf="submitted && f.dob.errors">
+                            <span class="min" *ngIf="f.dob.errors.required">Date of birth is required</span>
+                          </span>
+                        </label>
+                        <input formControlName="dob" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.dob.errors }" placeholder="yyyy-mm-dd" name="dp"
+                          ngbDatepicker #d="ngbDatepicker">
+                        <div class="select_icon" (click)="d.toggle()">
+                          <img src="assets/images/sape4.png" alt="sape" title="">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>mobile number <sup>*</sup>
+                          <span *ngIf="submitted && f.phone_no.errors">
+                            <span class="min" *ngIf="f.phone_no.errors.required">Mobile number is required</span>
+                            <span class="min" *ngIf="f.phone_no.errors.pattern">Please enter 10 digit mobile number</span>
+                          </span>
+                        </label>
+                        <input type="text" formControlName="phone_no" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.phone_no.errors }"
+                          placeholder="Enter your mobile no.">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!------- register account stop ------->
+
+        <!------ verification area start ------->
+        <!-- <div class="verification_area">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="verification_box">
+                <h3>
+                  Cell Phone Verification :
+                  <strong>Cell phone verification required to receive SMS Notifications.</strong>
+                </h3>
+                <div class="form-group">
+                  <label>cell phone <sup>*</sup></label>
+                  <div class="row row-7">
+                    <div class="col-lg-6">
+                      <input type="text" class="form-control" value="">
+                    </div>
+                    <div class="col-lg-6">
+                      <button class="btn btn-primary">verify now</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="verification_box">
+                <h3>
+                  credit card :
+                  <strong>If you are using a Pre-Paid card, please be sure to keep the card until all transactions are
+                    finalized</strong>
+                </h3>
+                <div class="row row-7">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label>name on card <sup>*</sup></label>
+                      <input type="text" class="form-control" value="">
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label>card number <sup>*</sup></label>
+                      <input type="text" class="form-control" value="">
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <label>expiration <sup>*</sup></label>
+                      <select class="form-control">
+                        <option>January</option>
+                      </select>
+                      <div class="select_icon"><img src="assets/images/sape3.png" alt="sape" title=""></div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <label>years <sup>*</sup></label>
+                      <select class="form-control">
+                        <option>2023</option>
+                      </select>
+                      <div class="select_icon"><img src="assets/images/sape3.png" alt="sape" title=""></div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <label>cvv <sup>*</sup></label>
+                      <input type="text" class="form-control" value="561">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <div class="submit_area">
+          <!-- <img src="assets/images/capture.jpg" class="capture_img" alt="capture" title=""> -->
+          <p>By submitting this form you acknowledge that you have read, understand, and agree to the <a
+              [routerLink]="['/registration']">Terms and Conditions</a>.</p>
+          <button class="btn btn-primary" (click)="onSubmit()">submit now</button>
+        </div>
+
+      </div>
+    </form>
+  </section>
+  <app-footer></app-footer>
+</ion-content>

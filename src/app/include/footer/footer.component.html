@@ -1,0 +1,122 @@
+<!------ footer area start ------>
+<footer class="footer_main_area">
+
+  <div class="footer_top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="footer_top_box">
+            <div class="media">
+              <img class="img-icon" src="assets/images/phone.png" alt="phone" title="">
+              <div class="media-body">
+                <h3>call us:</h3>
+                <a href="tel:{{setData?.phone_number}}">{{setData?.phone_number}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="footer_top_box pl-5">
+            <div class="media">
+              <img class="img-icon" src="assets/images/email.png" alt="email" title="">
+              <div class="media-body">
+                <h3>emall us:</h3>
+                <a href="mailto:{{setData?.email_address}}">{{setData?.email_address}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="footer_social">
+            <ul>
+              <li><a href="{{setData?.facebook}}" target="_blank"><img src="assets/images/facebook.png" alt="facebook" title=""></a></li>
+              <li><a href="{{setData?.twitter}}" target="_blank"><img src="assets/images/twitter.png" alt="twitter" title=""></a></li>
+              <li><a href="{{setData?.instagram}}" target="_blank"><img src="assets/images/instragram.png" alt="instragram" title=""></a>
+              </li>
+              <li><a href="{{setData?.linkedend}}" target="_blank"><img src="assets/images/linkedin.png" alt="linkedin" title=""></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer_bottom">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-4">
+          <div class="footer_logo">
+            <img src="assets/images/footer-logo.png" alt="footer logo" title="">
+          </div>
+          <div class="footer_store_box">
+            <ul>
+              <li>
+                <a href="#" target="_blank"><img src="assets/images/app-store.png" alt="app store" title=""></a>
+              </li>
+              <li>
+                <a href="#" target="_blank"><img src="assets/images/google-store.png" alt="google store" title=""></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-8">
+          <div class="row">
+
+            <div class="col-lg-4">
+              <div class="footer">
+                <h4>Quick links</h4>
+                <ul>
+                  <li><a [routerLink]="['/live-auctions']" routerLinkActive="active" >Live Auctions</a></li>
+                  <li><a href="#">AIY Auctions</a></li>
+                  <li><a href="#">Buyers</a></li>
+                  <li><a href="#">Past Auctions</a></li>
+                  <li><a [routerLink]="['/faq']">Faq</a></li>
+                  <li><a [routerLink]="['/contact-us']">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="footer">
+                <h4>AUction LOCATIONS</h4>
+                <ul>
+                  <li><a href="#">Columbus</a></li>
+                  <li><a href="#">Dayton</a></li>
+                  <li><a href="#">Chillicothe</a></li>
+                  <li><a href="#">Elyria</a></li>
+                  <li><a href="#">Mansfield</a></li>
+                  <li><a href="#">West Union</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="footer">
+                <h4>Live Auctions</h4>
+                <ul>
+                  <li><a href="#">Hyundai Verna</a></li>
+                  <li><a href="#">Apple iPhone 12 Pro 128 GB</a></li>
+                  <li><a href="#">Royal Enfield Bullet 350</a></li>
+                  <li><a href="#">Nikon D3500 DSLR Camera</a></li>
+                  <li><a href="#">TCL 138.71 cm</a></li>
+                  <li><a href="#">Sony PS4 1TB Slim Console</a></li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  <div class="copyright_area">
+    <div class="container">
+      <div class="copyright">
+        <p>Copyright © 2021 <a href="/home">Alexein</a>. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!------ footer area stop ------>

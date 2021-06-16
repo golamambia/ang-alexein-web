@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="true"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Product list</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <!-- <div class="card-header">
+          <i class="fa fa-align-justify"></i> Products...
+        </div> -->
+        <div class="card-body">
+          <table class="table table-bordered table-striped table-sm">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>
+                  Sort Description
+                </th>
+                <th>Bid Starting Price</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of pList">
+                <td>{{p.product_name}}</td>
+                <td>
+                  {{p.product_short_description}}
+                </td>
+                <td>{{p.product_bid_starting_price}}</td>
+                <td>
+                  <button *ngIf="p.status=='1'" (click)="updateStatus(p,0)" class="btn btn-sm btn-success" title="Click here to deactive status"><i class="fa fa-check-circle" aria-hidden="true"></i> Active</button>
+                  <button *ngIf="p.status=='0'" (click)="updateStatus(p,1)" class="btn btn-sm btn-warning" title="Click here to active status"><i class="fa fa-times-circle-o " aria-hidden="true"></i> Deactive</button>
+                </td>
+                <td>
+                  <button (click)="deleteProduct(p)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                  <button  routerLink="/admin/product-update/{{p.id}}"><i class="fa fa-edit"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- <nav>
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+              <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav> -->
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+
+</ion-content>

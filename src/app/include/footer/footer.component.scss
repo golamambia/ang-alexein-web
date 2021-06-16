@@ -1,0 +1,231 @@
+/*-------- footer css start --------*/
+.footer_main_area{}
+.footer_bottom{
+    background: #eeeef4;
+    padding: 70px 0px;
+}
+.footer_bottom .footer_logo{
+    width: 217px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.footer_bottom .footer_logo img{
+    width: 100%;
+    object-fit: cover;
+}
+.footer_bottom .footer_store_box{}
+.footer_bottom .footer_store_box ul{
+    padding: 0 0;
+    margin: 0 0;
+}
+.footer_bottom .footer_store_box ul li{
+    padding: 0 0 0 0;
+    margin: 0 2px 0 0;
+    display: inline-block;
+}
+.footer_bottom .footer_store_box ul li:last-child{
+    margin: 0 0 0 0;
+}
+.footer_bottom .footer_store_box ul li a{
+    display: inline-block;
+}
+
+.footer_bottom .footer{}
+.footer_bottom .footer h4{
+    text-transform: uppercase;
+    color: #120f38;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.footer_bottom .footer ul{
+    padding: 0 0;
+    margin: 0 0;
+}
+.footer_bottom .footer ul li{
+    list-style: none;
+    position: relative;
+    margin-bottom: 8px;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+.footer_bottom .footer ul li:hover{
+    padding-left: 8px;
+}
+.footer_bottom .footer ul li:last-child{
+    margin-bottom: 0px;
+}
+.footer_bottom .footer ul li a:before{
+    content: "\f101";
+    font-family: FontAwesome;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #000000;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+.footer_bottom .footer ul li a{
+    color: #000000;
+    font-size: 14px;
+    font-weight: 400;
+    position: relative;
+    padding-left: 18px;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+.footer_bottom .footer ul li:hover a{
+    color: #ed1c24;
+}
+.footer_bottom .footer ul li:hover a:before{
+    color: #ed1c24;
+}
+
+.copyright_area{
+    background: #ddddee;
+    padding: 15px 0px;
+}
+.copyright_area .copyright{
+    text-align: center;
+}
+.copyright_area .copyright p{
+    padding: 0 0;
+    margin: 0 0;
+    font-size: 15px;
+    font-weight: 400;
+    color: #000000;
+}
+.copyright_area .copyright p a{
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+    color: #ed1c24;
+}
+.copyright_area .copyright p a:hover{
+    text-decoration: underline;
+}
+
+.footer_top{
+    background: #262262;
+    padding: 30px 0px;
+}
+
+.footer_top .footer_top_box{
+    position: relative;
+    padding: 0 80px;
+}
+.footer_top .footer_top_box:after{
+    content: '';
+    position: absolute;
+    top: 3px;
+    right: 0;
+    width: 1px;
+    height: 85%;
+    background: #9391b1;
+}
+.footer_top .footer_top_box .media .media-body h3{
+    text-transform: uppercase;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 0px;
+    line-height: normal;
+}
+.footer_top .footer_top_box .media .media-body a{
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+    color: #dddddd;
+    font-size: 16px;
+    font-weight: 400px;
+}
+.footer_top .footer_top_box .media .media-body a:hover{
+    color: #ed1c24;
+}
+.footer_top .footer_top_box .media .img-icon{
+    margin-right: 25px;
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    -webkit-transition: all 0.9s 0s ease;
+    -moz-transition: all 0.9s 0s ease;
+    -o-transition: all 0.9s 0s ease;
+    transition: all 0.9s 0s ease;
+}
+.footer_top .footer_top_box .media:hover .img-icon{
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+.footer_top .footer_social{
+    text-align: center;
+}
+.footer_top .footer_social ul{
+    padding: 0 0;
+    margin: 0 0;
+}
+.footer_top .footer_social ul li{
+    display: inline-block;
+    padding: 0 0;
+    margin: 0 5px 0 0;
+    list-style: none;
+}
+.footer_top .footer_social ul li:last-child{
+    margin: 0 0 0 0;
+}
+.footer_top .footer_social ul li a{
+    display: inline-block;
+    -webkit-transition: all 0.9s 0s ease;
+    -moz-transition: all 0.9s 0s ease;
+    -o-transition: all 0.9s 0s ease;
+    transition: all 0.9s 0s ease;
+}
+.footer_top .footer_social ul li a:hover{
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+/*-------- footer css stop --------*/
+
+/*--------- chatbox css start -----------*/
+#chartbox {
+    position: fixed;
+    left: 30px;
+    bottom: 20px;
+    z-index: 9;
+    animation: float ease-in-out 5s infinite alternate;
+}
+
+@keyframes float
+{
+    0%, 100%
+    {
+        transform: translateY(0);
+    }
+    50%
+    {
+        transform: translateY(-20px);
+    }
+}
+@-webkit-keyframes float
+{
+    0%, 100%
+    {
+        -webkit-transform: translateY(0);
+    }
+    50%
+    {
+        -webkit-transform: translateY(-20px);
+    }
+}
+/*--------- chatbox css stop -----------*/

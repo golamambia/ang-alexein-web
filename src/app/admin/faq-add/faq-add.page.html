@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="true"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Add new faq</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div id="main">
+    <div class="site-content-contain">
+      <div id="content" class="site-content">
+        <div class="page-header clearfix">
+          <h1 class="pull-left"><i class="icon fa fa-user-o" aria-hidden="true"></i> Faq Add</h1>
+        </div>
+        <div class="profile_form_area">
+          <form [formGroup]="faqForm">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+          <label for="nf-email">Question</label>
+         
+          <input type="text" formControlName="faq_question" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.faq_question.errors }" placeholder="Question">
+          <div *ngIf="submitted && f.faq_question.errors" class="invalid-feedback">
+            <div *ngIf="f.faq_question.errors.required">Question is required</div>
+          </div>
+        </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+          <label for="nf-password">Answer</label>
+          <textarea formControlName="faq_asware" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.faq_asware.errors }" placeholder="Answer"></textarea>
+          <div *ngIf="submitted && f.faq_asware.errors" class="invalid-feedback">
+            <div *ngIf="f.faq_asware.errors.required">Answer is required</div>
+          </div>
+          <!-- <span class="help-block">Please enter category description</span> -->
+        </div>
+            </div>
+            
+            <div class="col-md-12">
+              <button class="btn btn-primary" (click)="submit()">SUBMIT</button>
+            </div>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

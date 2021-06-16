@@ -1,0 +1,86 @@
+<ion-content [fullscreen]="true" [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <app-header></app-header>
+  <section class="product_search_area">
+    <div class="container">
+      <div class="d-flex justify-content-between">
+        <div class="search_area">
+          <div class="form-group">
+            <div class="icon"><img src="assets/images/location-icon.png" alt="location icon" title=""></div>
+            <input type="text" class="form-control" value="Choose Location">
+          </div>
+          <button class="btn btn-success">filter</button>
+          <button class="btn btn-primary">reset</button>
+        </div>
+        <div class="sort_by">
+          <select class="form-control">
+            <option>Sort by</option>
+          </select>
+          <div class="icon"><img src="assets/images/sape3.png" alt="sape" title=""></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="main_area product_listing_area">
+    <div class="container">
+
+      <!------ pagination area start ----->
+      <!-- <div class="pagination_area text-right mb-5">
+        <ul class="pagination">
+          <li><a href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+          <li class="active"><a href="#">1</a></li>
+          <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+        </ul>
+        <div class="go_page">
+          <input type="text" class="form-control" value="">
+          <p>/ 10</p>
+          <button class="btn btn-primary">go</button>
+        </div>
+      </div> -->
+      <!------ pagination area stop ----->
+
+      <div class="row row-7">
+
+        <div  *ngFor="let p of pList" class="col-lg-3" >
+          <div class="product">
+            <div class="product_box">
+              <div class="image_box">
+                <a [routerLink]="['/product-details/'+ p.id]"><img src="{{image_path + p.product_picture}}" alt="product" title=""></a>
+              </div>
+              <div class="contain_box">
+                <h4>Auction ID. BB31470</h4>
+                <a [routerLink]="['/product-details/'+ p.id]" class="link">{{p.product_name}}</a>
+                <h3>Max Bid: {{p.product_bid_starting_price}}</h3>
+                <button [routerLink]="['/product-details/'+ p.id]" class="btn btn-bid">bid now <i class="zmdi zmdi-plus-circle"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+
+        
+
+      </div>
+
+      <!------ pagination area start ----->
+      <div class="pagination_area mt-5">
+        <p>Showing 1 to 10 of 120 Auctions</p>
+        <ul class="pagination">
+          <li><a href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+          <li class="active"><a href="#">1</a></li>
+          
+          <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+        </ul>
+        <div class="go_page">
+          <input type="text" class="form-control" value="">
+          <p>/ 10</p>
+          <button class="btn btn-primary">go</button>
+        </div>
+      </div>
+      <!------ pagination area stop ----->
+
+    </div>
+  </section>
+
+  <app-footer></app-footer>
+</ion-content>

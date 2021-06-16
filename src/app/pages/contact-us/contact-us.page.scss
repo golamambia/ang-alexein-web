@@ -1,0 +1,196 @@
+/*----- product search css start ------*/
+.product_search_area{
+    padding: 35px 0px;
+    background: #f7f6ff;
+}
+.product_search_area .search_area{}
+.product_search_area .search_area .form-group{
+    width: 316px;
+    display: inline-block;
+    position: relative;
+    margin: 0 2px 0 0;
+}
+.product_search_area .search_area .form-control{
+    width: 100%;
+    height: 48px !important;
+    border: 1px solid #c9c9c9;
+    box-sizing: border-box;
+    border-radius: 5px;
+    outline: none;
+    padding-left: 40px;
+    font-size: 15px;
+}
+.product_search_area .search_area .form-group .icon{
+    content: '';
+    position: absolute;
+    top: 11px;
+    left: 18px;
+}
+.product_search_area .search_area .btn{
+    padding: 11px 30px;
+}
+.product_search_area .sort_by{
+    width: 117px;
+    position: relative;
+}
+.product_search_area .sort_by select.form-control{
+    width: 100%;
+    height: 48px !important;
+    border-radius: 5px;
+    border: 1px solid #c9c9c9;
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+}
+.product_search_area .sort_by .icon{
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.product_search_area .sort_by:after{
+    content: '';
+    position: absolute;
+    top: 11px;
+    right: 28px;
+    width: 1px;
+    height: 55%;
+    background: #c9c9c9;
+    box-sizing: border-box;
+}
+/*----- product search css stop ------*/
+
+.product_search_area h1 {
+    color: #262262;
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    line-height: normal;
+}
+.product_search_area ul.pagger_link{
+    padding: 0 0;
+    margin: 0 0;
+}
+.product_search_area ul.pagger_link li{
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    padding-right: 8px;
+    margin-right: 8px;
+}
+.product_search_area ul.pagger_link li:after{
+    content: "\f105";
+    font-family: FontAwesome;
+    position: absolute;
+    top: 1px;
+    right: -5px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+}
+.product_search_area ul.pagger_link li:last-child{
+    padding-right: 0px;
+    margin-right: 0px;
+}
+.product_search_area ul.pagger_link li:last-child:after{
+    display: none;
+}
+.product_search_area ul.pagger_link li a{
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-block;
+    text-transform: capitalize;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+.product_search_area ul.pagger_link li a:hover{
+    color: #ed1c24;
+}
+.product_search_area ul.pagger_link li.active{
+    color: #ed1c24;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-block;
+    text-transform: capitalize;
+}
+
+/*--------- contact us css start --------*/
+.contact_us_area{}
+.contact_us_area .contact_address{
+    height: 250px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background: #fff;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgb(220 219 239);
+    padding: 20px 20px;
+    margin-bottom: 20px;
+}
+.contact_us_area .contact_address h3{
+    text-transform: capitalize;
+    line-height: normal;
+    font-size: 22px;
+    font-weight: 600;
+    color: #262262;
+    margin: 0 0 0;
+}
+.contact_us_area .contact_address p{
+    padding: 0 0;
+    margin: 0 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+}
+.contact_us_area .contact_address .icon{
+    font-size: 55px;
+    color: #ed1c24;
+}
+.contact_us_area .contact_address a.link{
+    padding: 0 0;
+    margin: 0 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+.contact_us_area .contact_address a.link:hover{
+    color: #ed1c24;
+}
+
+.contact_us_area .contact_form_box{
+    background: #f6f6f9;
+    padding: 30px;
+}
+.contact_us_area .contact_form_box h2{
+    line-height: normal;
+    margin: 0 0 0;
+    color: #262262;
+    font-size: 30px;
+    font-weight: 600;
+}
+.contact_us_area .contact_form_box p{
+    font-size: 15px;
+    font-weight: 400;
+    color: #333333;
+    line-height: normal;
+    margin-bottom: 15px;
+}
+.contact_us_area .contact_form_box textarea.form-control{
+    height: 120px !important;
+}
+.contact_us_area .map_area{}
+.contact_us_area .map_area iframe{
+    width: 100%;
+    height: 572px;
+}
+
+/*--------- contact us css stop --------*/

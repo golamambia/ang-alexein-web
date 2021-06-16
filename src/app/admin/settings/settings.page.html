@@ -1,0 +1,127 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="true"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Settings Update</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div id="main">
+    <div class="site-content-contain">
+      <div id="content" class="site-content">
+        <div class="page-header clearfix">
+          <h1 class="pull-left"><i class="icon fa fa-user-o" aria-hidden="true"></i> Settings update</h1>
+        </div>
+        <div class="profile_form_area">
+          <form [formGroup]="categoryForm">
+          <div class="row">
+            <div class="col-md-12">
+         <div class="form-group">
+          <label for="nf-email">Phone Number</label>
+          <!-- <input type="text" id="nf-email" name="nf-email" class="form-control" placeholder="Enter Category Name.." autocomplete="category"> -->
+
+          <!-- <span class="help-block">Please enter category name</span> -->
+          <input type="text" formControlName="phone_number" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.phone_number.errors }" placeholder="Phone no">
+          <div *ngIf="submitted && f.phone_number.errors" class="invalid-feedback">
+            <div *ngIf="f.phone_number.errors.required">Phone Number is required</div>
+          </div>
+        </div>
+            </div>
+            <div class="col-md-12">
+            <div class="form-group">
+          <label for="nf-password">Email Address</label>
+          <textarea formControlName="email_address" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.email_address.errors }" placeholder="Email"></textarea>
+          <div *ngIf="submitted && f.email_address.errors" class="invalid-feedback">
+            <div *ngIf="f.email_address.errors.required">Email is required</div>
+          </div>
+          
+        </div>
+            </div>
+            <div class="col-md-12">
+         <div class="form-group">
+          <label for="nf-password">Address</label>
+          <textarea formControlName="address" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.address.errors }" placeholder="Address"></textarea>
+          <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+            <div *ngIf="f.address.errors.required">Address is required</div>
+          </div>
+          
+        </div>
+            </div>
+            <div class="col-md-12">
+            <div class="form-group">
+          <label for="nf-password">Facebook</label>
+          <textarea formControlName="facebook" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.facebook.errors }" placeholder="Facebook"></textarea>
+          <div *ngIf="submitted && f.facebook.errors" class="invalid-feedback">
+            <div *ngIf="f.facebook.errors.required">Facebook is required</div>
+          </div>
+          
+        </div>
+            </div>
+            <div class="col-md-12">
+         <div class="form-group">
+          <label for="nf-password">Twitter</label>
+          <textarea formControlName="twitter" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.twitter.errors }" placeholder="Twitter"></textarea>
+          <div *ngIf="submitted && f.twitter.errors" class="invalid-feedback">
+            <div *ngIf="f.twitter.errors.required">Twitter is required</div>
+          </div>
+          
+        </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+          <label for="nf-password">Linkedend</label>
+          <textarea formControlName="linkedend" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.linkedend.errors }" placeholder="Linkedend"></textarea>
+          <div *ngIf="submitted && f.linkedend.errors" class="invalid-feedback">
+            <div *ngIf="f.linkedend.errors.required">Linkedend is required</div>
+          </div>
+          
+        </div>
+            </div>
+            <div class="col-md-12">
+          <div class="form-group">
+          <label for="nf-password">Instagram</label>
+          <textarea formControlName="instagram" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.instagram.errors }" placeholder="Instagram"></textarea>
+          <div *ngIf="submitted && f.instagram.errors" class="invalid-feedback">
+            <div *ngIf="f.instagram.errors.required">Instagram is required</div>
+          </div>
+          
+        </div>
+            </div>
+            <div class="col-md-12">
+            <div class="form-group">
+          <label for="nf-password">Logo</label>
+          <input type="file" (change)="importFile($event)" formControlName="category_picture" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.category_picture.errors }" placeholder="Category Image">
+          <div *ngIf="submitted && f.category_picture.errors" class="invalid-feedback">
+            <div *ngIf="f.category_picture.errors.required">Picture is required</div>
+          </div>
+        </div>
+            </div>
+            <div class="col-md-12">
+         <div>
+          <img src="{{image_path + category_picture}}" style="width: 100px;height: 100px;">
+        </div>
+            </div>
+            
+            
+            <div class="col-md-12">
+              <button class="btn btn-primary" (click)="submit()">SUBMIT</button>
+            </div>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

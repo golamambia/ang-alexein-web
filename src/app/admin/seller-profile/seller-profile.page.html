@@ -1,0 +1,135 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="true"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Seller Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <div id="main">
+    <div class="site-content-contain">
+      <div id="content" class="site-content">
+        <div class="page-header clearfix">
+          <h1 class="pull-left"><i class="icon fa fa-user-o" aria-hidden="true"></i> Profile</h1>
+        </div>
+
+        <div class="profile_form_area">
+          
+          
+          <form >
+          <div class="row">
+            
+            <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>Full name <sup>*</sup>
+                         
+                        </label>
+                        <input type="text" [(ngModel)]="name" class="form-control"
+                          [ngModelOptions]="{standalone:true}"  placeholder="Enter your full name">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>Email address <sup>*</sup>
+                          
+                        </label>
+                        <input type="text" placeholder="Email" [(ngModel)]="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email"name="email" ngModel #emailref="ngModel" >
+          <div *ngIf="emailref.errors &&(emailref.touched || emailref.dirty)" class ="alert alert-danger">
+           <div [hidden]="!emailref.errors?.pattern">
+             Invalid pattern
+           </div>
+                      </div>
+                    </div>
+                  </div>
+                    
+                    
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>Mobile number <sup>*</sup>
+                          
+                        </label>
+                        <input type="text" [(ngModel)]="phone_no" class="form-control"
+                          [ngModelOptions]="{standalone:true}" 
+                          placeholder="Enter your mobile no." (keypress)="onlyNumberKey($event)" maxlength="12">
+                      </div>
+                    </div>
+                   
+                    
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>Billing address <sup>*</sup>
+                          
+                        </label>
+                        <input type="text" [(ngModel)]="billing_address" class="form-control"
+                          [ngModelOptions]="{standalone:true}" 
+                          placeholder="Enter billing address">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>Country <sup>*</sup>
+                         
+                        </label>
+                        <input type="text" [(ngModel)]="country" class="form-control"
+                          [ngModelOptions]="{standalone:true}"  placeholder="Enter country name">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>State <sup>*</sup>
+                         
+                        </label>
+                        <select [(ngModel)]="state" class="form-control"
+                          [ngModelOptions]="{standalone:true}" >
+                          <option disabled selected value="">Select State</option>
+                          <option value="West Bengal">West Bengal</option>
+                          <option value="other">Other</option>
+                        </select>
+                        
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>City <sup>*</sup>
+                        
+                        </label>
+                        <input type="text" [(ngModel)]="city" class="form-control"
+                          [ngModelOptions]="{standalone:true}"  placeholder="Enter city name">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>Zip code <sup>*</sup>
+                          
+                        </label>
+                        <input type="text" [(ngModel)]="zip" class="form-control"
+                          [ngModelOptions]="{standalone:true}"  placeholder="Enter zip code" (keypress)="onlyNumberKey($event)" maxlength="6">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>Date of birth <sup>*</sup>
+                        
+                        </label>
+                        <input [(ngModel)]="dob" type="date" class="form-control"
+                          [ngModelOptions]="{standalone:true}"  placeholder="yyyy-mm-dd" name="dp"
+                          >
+                        
+                      </div>
+                    </div>
+            
+            <div class="col-md-12">
+              <button class="btn btn-primary" (click)="onSubmit()">SUBMIT</button>
+            </div>
+          </div>
+        </form>
+        
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</ion-content>

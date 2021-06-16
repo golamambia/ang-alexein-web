@@ -1,0 +1,28 @@
+
+<ion-menu side="start" menuId="first" contentId="main">
+  <ion-header>
+    <ion-toolbar color="theme">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle>
+      <ion-item [routerLink]="['/seller']" routerLinkActive="active">Dashboard</ion-item>
+      <!-- <ion-item [routerLink]="['/seller/category-add']" routerLinkActive="active">Category Add</ion-item>
+      <ion-item [routerLink]="['/seller/category-list']" routerLinkActive="active">Category List</ion-item>
+      <ion-item [routerLink]="['/seller/sub-category-add']" routerLinkActive="active">Sub Category Add</ion-item>
+      <ion-item [routerLink]="['/seller/sub-category-list']" routerLinkActive="active">Sub Category List</ion-item> -->
+      <ion-item [routerLink]="['/seller/product-add']" routerLinkActive="active">Product Add</ion-item>
+      <ion-item [routerLink]="['/seller/product-list']" routerLinkActive="active">Product List</ion-item>
+      <ion-item [routerLink]="['/seller/group-add']" routerLinkActive="active">Group Add</ion-item>
+      <ion-item [routerLink]="['/seller/group-list']" routerLinkActive="active">Group List</ion-item>
+      <ion-item [routerLink]="['/seller/product-add-group']" routerLinkActive="active">Product Add To Group</ion-item>
+      <ion-item [routerLink]="['/seller/profile']" routerLinkActive="active">My Profile</ion-item>
+      <ion-item (click)="logout()" style="cursor: pointer;" routerLinkActive="active">Logout</ion-item>
+    </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-router-outlet [animated]="animated" id="main"></ion-router-outlet>

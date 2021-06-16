@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="true"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Product add to group</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <!-- <div class="card-header">
+          <i class="fa fa-align-justify"></i> Products...
+        </div> -->
+        <div class="row" style="margin-top: 7px;margin-left: 5px;">
+          <div class="col-md-4">
+            <select  class="form-control" [(ngModel)]="group_name" [ngModelOptions]="{standalone:true}" (change)="getGroupid($event.target.value)">
+            <option value="" selected>Select group</option>
+            <option *ngFor="let gl of groupList"   value="{{gl.id}}">{{gl.category_group_name}}</option>
+          </select>
+          </div>
+          <div class="col-md-2">
+           <button class="btn btn-sm1 btn-primary" title="Click here to add" (click)="productAdd()"> Save</button>
+          </div>
+          
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-striped table-sm">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>
+                  Sort Description
+                </th>
+                <th>Bid Starting Price</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of pList">
+                <td>{{p.product_name}}</td>
+                <td>
+                  {{p.product_short_description}}
+                </td>
+                <td>{{p.product_bid_starting_price}}</td>
+                <td><button *ngIf="p.status=='1'"  class="btn btn-sm btn-success" ><i class="fa fa-check-circle" aria-hidden="true"></i> Active</button>
+                  <button *ngIf="p.status=='0'"  class="btn btn-sm btn-warning" ><i class="fa fa-times-circle-o " aria-hidden="true"></i> Deactive</button>
+                </td>
+                <td>
+                              
+                   <div *ngIf="p.is_front==1" >
+                      <input type="checkbox" value="{{p.id}}"  name="" (change)="onChange(p.id, $event.target.checked)" checked="true">
+                  <button (click)="deleteProduct(p,p.is_front_two)" title="Product delete from group"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                  </div>
+                
+                  <input *ngIf="p.is_front==0"  type="checkbox" value="{{p.id}}"  name="" (change)="onChange(p.id, $event.target.checked)" >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- <nav>
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+              <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav> -->
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+
+</ion-content>

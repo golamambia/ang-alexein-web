@@ -1,0 +1,155 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="true"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Update product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="main">
+    <div class="site-content-contain">
+      <div id="content" class="site-content">
+        <div class="page-header clearfix">
+          <h1 class="pull-left"><i class="icon fa fa-user-o" aria-hidden="true"></i> Product Update</h1>
+        </div>
+
+
+        <!----- profile form area start ------>
+        <form [formGroup]="productForm">
+        <div class="profile_form_area">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Product Name</label>
+                <input type="text" formControlName="product_name" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.product_name.errors }" placeholder="Product Name">
+                <div *ngIf="submitted && f.product_name.errors" class="invalid-feedback">
+                  <div *ngIf="f.product_name.errors.required">Product Name is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Bid Starting Price</label>
+                <input type="text" formControlName="product_bid_starting_price" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.product_bid_starting_price.errors }" placeholder="Bid Starting Price">
+                <div *ngIf="submitted && f.product_bid_starting_price.errors" class="invalid-feedback">
+                  <div *ngIf="f.product_bid_starting_price.errors.required">Bid starting price is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Sort Description</label>
+                <textarea formControlName="product_short_description" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.product_short_description.errors }" placeholder="Product sort description"></textarea>
+                <div *ngIf="submitted && f.product_short_description.errors" class="invalid-feedback">
+                  <div *ngIf="f.product_short_description.errors.required">Sort description is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Long Description</label>
+                <textarea formControlName="product_long_description" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.product_long_description.errors }" placeholder="Product long description"></textarea>
+                <div *ngIf="submitted && f.product_long_description.errors" class="invalid-feedback">
+                  <div *ngIf="f.product_long_description.errors.required">Long description is required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Important Highlights</label>
+                <input type="text" formControlName="product_important_highlights" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.product_important_highlights.errors }" placeholder="Important Highlights">
+                <div *ngIf="submitted && f.product_important_highlights.errors" class="invalid-feedback">
+                  <div *ngIf="f.product_important_highlights.errors.required">Important Highlights is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Product Location</label>
+                <input type="text" formControlName="product_location" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.product_location.errors }" placeholder="Location">
+                <div *ngIf="submitted && f.product_location.errors" class="invalid-feedback">
+                  <div *ngIf="f.product_location.errors.required">Location is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Bid start date and time</label>
+                <input type="datetime-local" formControlName="product_bid_start_date_and_time" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.product_bid_start_date_and_time.errors }" placeholder="Bid start date and time">
+                <div *ngIf="submitted && f.product_bid_start_date_and_time.errors" class="invalid-feedback">
+                  <div *ngIf="f.product_bid_start_date_and_time.errors.required">Bid start date and time is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Bid end date and time</label>
+                <input type="datetime-local" formControlName="product_bid_end_date_and_time" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.product_bid_end_date_and_time.errors }" placeholder="Bid end date and time">
+                <div *ngIf="submitted && f.product_bid_end_date_and_time.errors" class="invalid-feedback">
+                  <div *ngIf="f.product_bid_end_date_and_time.errors.required">Bid end date and time is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Product Main Image</label>
+                <input type="file" (change)="importFile($event)" formControlName="product_picture" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.product_picture.errors }" placeholder="Product Image">
+                <div *ngIf="submitted && f.product_picture.errors" class="invalid-feedback">
+                  <div *ngIf="f.product_picture.errors.required">Picture is required</div>
+                </div>
+                <br>
+                <div >
+          <img src="{{image_path + product_picture}}" style="width: 100px;height: 100px;">
+        </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Multiple Images</label>
+                <input type="file" multiple="false" (change)="importFiles($event)" formControlName="product_pictures" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.product_pictures.errors }" placeholder="Product Image">
+                <div *ngIf="submitted && f.product_pictures.errors" class="invalid-feedback">
+                  <div *ngIf="f.product_pictures.errors.required">Multiple images is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div *ngFor="let mp of more_picture"  style="float: left;
+    margin-right: 10px;max-width: 40%;max-height: 40%;margin-bottom: 20px;position: relative;">
+          <img src="{{image_path + mp.product_image}}" style="width: 100px;height: 100px;">
+          <div (click)="deleteMultiImage(mp)" style="position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 10px;
+    color: red;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;"><i class="icon fa fa-trash" aria-hidden="true"></i></div>
+        </div>
+            </div>
+            <br>
+            <div class="col-md-12">
+              <button class="btn btn-primary" (click)="submit()">SUBMIT</button>
+            </div>
+          </div>
+        </div>
+        </form>
+        <!----- profile form area stop ------>
+
+      </div>
+    </div>
+  </div>
+
+</ion-content>

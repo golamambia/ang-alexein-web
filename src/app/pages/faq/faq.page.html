@@ -1,0 +1,60 @@
+<ion-content [fullscreen]="true" [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+
+  <app-header></app-header>
+
+  <!----- product search area start ----->
+  <section class="product_search_area">
+    <div class="container">
+      <h1>frequently asked questions</h1>
+      <ul class="pagger_link">
+        <li><a [routerLink]="['/']">home</a></li>
+        <li class="active">FAQ</li>
+      </ul>
+    </div>
+  </section>
+  <!----- product search area stop ----->
+
+  <!------- faq area start ------->
+  <section class="main_area faq_area">
+    <div class="container">
+
+      <div class="row row-25">
+        <div class="col-lg-9">
+          <div class="faq_body">
+
+            <div id="accordion" class="accordion">
+              <div class="card mb-0">
+                <div *ngFor="let f of catList; let i=index;">
+                <div class="card-header collapsed " data-toggle="collapse" href="#collapseOne">
+                  <div class="number_box">{{i+1}}.</div>
+                  <a class="card-title">
+                    {{f.faq_question}}
+                  </a>
+                </div>
+                <div id="collapseOne" class="card-body collapse" data-parent="#accordion">
+                  <p>{{f.faq_asware}}</p>
+                </div>
+               </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="faq_help">
+            <h4>How we can help you!</h4>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
+            <a [routerLink]="['/contact-us']" class="btn btn-primary">contact us <i class="fa fa-long-arrow-right"
+                aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!------- faq area stop ------->
+
+
+  <app-footer></app-footer>
+</ion-content>

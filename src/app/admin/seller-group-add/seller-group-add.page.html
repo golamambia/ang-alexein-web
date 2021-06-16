@@ -1,0 +1,173 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="true"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{titleText}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="main">
+    <div class="site-content-contain">
+      <div id="content" class="site-content">
+        <div class="page-header clearfix">
+          <h1 class="pull-left"><i class="icon fa fa-user-o" aria-hidden="true"></i> {{titleText1}}</h1>
+        </div>
+
+
+        <!----- profile form area start ------>
+        <div class="profile_form_area">
+          <form [formGroup]="groupForm">
+          <div class="row">
+             <div class="col-md-12">
+            <div class="form-group">
+          <label>Select Seller</label>
+          <select formControlName="seller_id" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.seller_id.errors }">
+            <option value="" selected>Select one</option>
+            <option *ngFor="let c of sellList" [value]="c.id">{{c.name}}</option>
+          </select>
+          <!-- <input type="text" formControlName="parent_category_id" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.parent_category_id.errors }" placeholder="Category name"> -->
+          <div *ngIf="submitted && f.seller_id.errors" class="invalid-feedback">
+            <div *ngIf="f.seller_id.errors.required">Please select a seller</div>
+          </div>
+        </div>
+      </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>CG Number</label>
+                <input type="text" formControlName="auction_cg_number" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.auction_cg_number.errors }" placeholder="CG Number">
+                <div *ngIf="submitted && f.auction_cg_number.errors" class="invalid-feedback">
+                  <div *ngIf="f.auction_cg_number.errors.required">CG Number is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Group Name</label>
+                <input type="text" formControlName="category_group_name" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.category_group_name.errors }" placeholder="Category group name">
+                <div *ngIf="submitted && f.category_group_name.errors" class="invalid-feedback">
+                  <div *ngIf="f.category_group_name.errors.required">Group name is required</div>
+                </div>
+              </div>
+            </div>
+              <div class="col-md-12">
+            <div class="form-group">
+          <label>Category</label>
+          <select formControlName="category_id" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.category_id.errors }">
+            <option value="" selected>Select one</option>
+            <option *ngFor="let c of categoryList" [value]="c.category_id">{{c.category_name}}</option>
+          </select>
+         
+          <div *ngIf="submitted && f.category_id.errors" class="invalid-feedback">
+            <div *ngIf="f.category_id.errors.required">Please select a category</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+              <div class="form-group">
+                <label>Start date and Time</label>
+                <input type="datetime-local" formControlName="start_date_and_time" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.start_date_and_time.errors }" placeholder="End date and time">
+                <div *ngIf="submitted && f.start_date_and_time.errors" class="invalid-feedback">
+                  <div *ngIf="f.start_date_and_time.errors.required">End date and time is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>End date and Time</label>
+                <input type="datetime-local" formControlName="end_date_and_time" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.end_date_and_time.errors }" placeholder="End date and time">
+                <div *ngIf="submitted && f.end_date_and_time.errors" class="invalid-feedback">
+                  <div *ngIf="f.end_date_and_time.errors.required">End date and time is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Location</label>
+                <input type="text" formControlName="location" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.location.errors }" placeholder="Location">
+                <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+                  <div *ngIf="f.location.errors.required">Location is required</div>
+                </div>
+              </div>
+            </div>
+             <div class="col-md-12">
+              <div class="form-group">
+                <label>Zipcode</label>
+                <input type="text" formControlName="zip" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.zip.errors }" placeholder="Zipcode" (keypress)="onlyNumberKey($event)" maxlength="6">
+                <div *ngIf="submitted && f.zip.errors" class="invalid-feedback">
+                  <div *ngIf="f.zip.errors.required">Zipcode is required</div>
+                </div>
+              </div>
+            </div>
+           <div class="col-md-12">
+              <div class="form-group">
+                <label>Description</label>
+                
+                <textarea formControlName="description" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.description.errors }" placeholder="Description"></textarea>
+                <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                  <div *ngIf="f.description.errors.required">Description is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Highlights</label>
+              
+                 <textarea formControlName="highlights" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.highlights.errors }" placeholder="Highlights"></textarea>
+                
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Notes</label>
+                 <textarea formControlName="notes" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.notes.errors }" placeholder="Notes"></textarea>
+                
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Terms</label>
+                 <textarea formControlName="terms" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.terms.errors }" placeholder="Terms"></textarea>
+              
+              </div>
+            </div>
+             <div class="col-md-12">
+              <div class="form-group">
+                <label>Main Image</label>
+                <input type="file" (change)="importFile($event)" formControlName="category_group_image1" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.category_group_image1.errors }" placeholder="Product Image">
+                <div *ngIf="submitted && f.category_group_image1.errors" class="invalid-feedback">
+                  <div *ngIf="f.category_group_image1.errors.required">Picture is required</div>
+                </div>
+                <br>
+                 <div *ngIf="product_picture">
+          <img src="{{image_path + product_picture}}" style="width: 100px;height: 100px;">
+        </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <button class="btn btn-primary" (click)="submit()">SUBMIT</button>
+            </div>
+          </div>
+        </form>
+        </div>
+        <!----- profile form area stop ------>
+
+      </div>
+    </div>
+  </div>
+</ion-content>

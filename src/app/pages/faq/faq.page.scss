@@ -1,0 +1,214 @@
+/*----- product search css start ------*/
+.product_search_area{
+    padding: 35px 0px;
+    background: #f7f6ff;
+}
+.product_search_area .search_area{}
+.product_search_area .search_area .form-group{
+    width: 316px;
+    display: inline-block;
+    position: relative;
+    margin: 0 2px 0 0;
+}
+.product_search_area .search_area .form-control{
+    width: 100%;
+    height: 48px !important;
+    border: 1px solid #c9c9c9;
+    box-sizing: border-box;
+    border-radius: 5px;
+    outline: none;
+    padding-left: 40px;
+    font-size: 15px;
+}
+.product_search_area .search_area .form-group .icon{
+    content: '';
+    position: absolute;
+    top: 11px;
+    left: 18px;
+}
+.product_search_area .search_area .btn{
+    padding: 11px 30px;
+}
+.product_search_area .sort_by{
+    width: 117px;
+    position: relative;
+}
+.product_search_area .sort_by select.form-control{
+    width: 100%;
+    height: 48px !important;
+    border-radius: 5px;
+    border: 1px solid #c9c9c9;
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+}
+.product_search_area .sort_by .icon{
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.product_search_area .sort_by:after{
+    content: '';
+    position: absolute;
+    top: 11px;
+    right: 28px;
+    width: 1px;
+    height: 55%;
+    background: #c9c9c9;
+    box-sizing: border-box;
+}
+/*----- product search css stop ------*/
+
+.product_search_area h1 {
+    color: #262262;
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    line-height: normal;
+}
+.product_search_area ul.pagger_link{
+    padding: 0 0;
+    margin: 0 0;
+}
+.product_search_area ul.pagger_link li{
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    padding-right: 8px;
+    margin-right: 8px;
+}
+.product_search_area ul.pagger_link li:after{
+    content: "\f105";
+    font-family: FontAwesome;
+    position: absolute;
+    top: 1px;
+    right: -5px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+}
+.product_search_area ul.pagger_link li:last-child{
+    padding-right: 0px;
+    margin-right: 0px;
+}
+.product_search_area ul.pagger_link li:last-child:after{
+    display: none;
+}
+.product_search_area ul.pagger_link li a{
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-block;
+    text-transform: capitalize;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+.product_search_area ul.pagger_link li a:hover{
+    color: #ed1c24;
+}
+.product_search_area ul.pagger_link li.active{
+    color: #ed1c24;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-block;
+    text-transform: capitalize;
+}
+
+/*---------- faq area css start ----------*/
+.faq_area{}
+.faq_area .faq_help{
+    position: relative;
+    color: #fff;
+    background: #262262;
+    padding: 28px 30px 40px 30px;
+    -webkit-clip-path: polygon(90% 0,100% 18%,100% 100%,0 100%,0 0);
+    clip-path: polygon(90% 0,100% 18%,100% 100%,0 100%,0 0);
+    position: relative;
+}
+.faq_area .faq_help:after{
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 6px;
+    width: 100px;
+    height: 100px;
+    background-image: url(/assets/images/faq-help-icon.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.faq_area .faq_help h4{
+    color: #fff;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 10px;
+}
+.faq_area .faq_help p{
+    font-size: 15px;
+    font-weight: 400;
+    color: #f6f5ff;
+}
+.faq_area .faq_help .btn-primary{
+    background: transparent !important;
+    border-color: #fff !important;
+}
+.faq_area .faq_help .btn-primary:hover{
+    color: #000 !important;
+    background: #fff !important;
+}
+
+.faq_area .faq_body{}
+.faq_area .faq_body .accordion .card-header:after {
+    font-family: 'FontAwesome';  
+    content: "\f068";
+    float: right;
+    color: #262262;
+}
+.faq_area .faq_body .accordion .card-header.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\f067"; 
+}
+.faq_area .faq_body .card{
+    border: none;
+}
+.faq_area .faq_body .card .card-header{
+    background: transparent;
+    padding-left: 30px;
+    padding-right: 0px;
+    position: relative;
+    cursor: pointer;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.faq_area .faq_body .card .card-header .card-title{
+    font-weight: 600;
+    color: #262262;
+    font-size: 16px;
+}
+.faq_area .faq_body .card .card-header .number_box{
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    font-size: 18px;
+    color: #ed1c24;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.faq_area .faq_body .card .card-body{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.faq_area .faq_body .card .card-body p{
+    font-size: 15px;
+}
+.faq_area .faq_body .card .card-body p:last-child{
+    margin-bottom: 0px;
+}
+/*---------- faq area css stop ----------*/

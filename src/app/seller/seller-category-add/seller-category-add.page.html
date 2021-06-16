@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="true"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Add new category</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div id="main">
+    <div class="site-content-contain">
+      <div id="content" class="site-content">
+        <div class="page-header clearfix">
+          <h1 class="pull-left"><i class="icon fa fa-user-o" aria-hidden="true"></i> Category Add</h1>
+        </div>
+        <div class="profile_form_area">
+          <form [formGroup]="categoryForm">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Category Name</label>
+                <input type="text" formControlName="category_name" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.category_name.errors }" placeholder="Category name">
+                <div *ngIf="submitted && f.category_name.errors" class="invalid-feedback">
+                  <div *ngIf="f.category_name.errors.required">Name is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Category Image</label>
+                <input type="file" (change)="importFile($event)" formControlName="category_picture" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.category_picture.errors }" placeholder="Category Image">
+                <div *ngIf="submitted && f.category_picture.errors" class="invalid-feedback">
+                  <div *ngIf="f.category_picture.errors.required">Picture is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Description</label>
+                <textarea formControlName="category_description" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.category_description.errors }" placeholder="Category description"></textarea>
+                <div *ngIf="submitted && f.category_description.errors" class="invalid-feedback">
+                  <div *ngIf="f.category_description.errors.required">Description is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <button class="btn btn-primary" (click)="submit()">SUBMIT</button>
+            </div>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

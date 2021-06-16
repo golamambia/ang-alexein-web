@@ -1,0 +1,356 @@
+<ion-content [fullscreen]="true" [scrollEvents]="true" (ionScrollStart)="logScrollStart($event)"
+  (ionScroll)="logScrolling($event)" (ionScrollEnd)="logScrollEnd($event)">
+  <app-header></app-header>
+
+  <section class="main_banner_area">
+    <div class="">
+      <div class="row row-0">
+        <div class="col-lg-7">
+          <div class="sliders-container">
+            <div class="sliders-div">
+              <ng-container *ngFor="let s of img_list; let i = index">
+                <div class="slider-div" *ngIf="current == i" @fade>
+                  <img class="sliders-img" [src]="s.url">
+                  <div class="con" *ngIf="current == i" @fade>
+                    <!-- <h1>Retail <br />Inventory</h1>
+                    <p>Exentended for today 60% off</p> -->
+                    <h1>{{s.title}}</h1>
+                    <p>{{s.off}}</p>
+                    <a href="#" class="btn btn-primary">bid now</a>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-lg-5">
+          <div class="banner_right_box">
+            <img src="assets/images/category7.jpg" alt="banner" title="">
+            <div class="contain_box">
+              <div class="w-100">
+                <h5>Women’s <br />Jewelry</h5>
+                <a href="#" class="btn btn-primary">bid now</a>
+              </div>
+            </div>
+          </div>
+          <div class="banner_right_box">
+            <img src="assets/images/category8.jpg" alt="banner" title="">
+            <div class="contain_box">
+              <div class="w-100">
+                <h4>AIY <br />Auctions</h4>
+                <a href="#" class="btn btn-primary">bid now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-------- find live auction area start -------->
+  <section class="main_area find_oction">
+    <div class="container">
+      <div class="find_oction_body">
+        <h3>Find Live Auctions</h3>
+        <div class="row row-7">
+          <div class="col-lg-2">
+            <div class="form-group">
+              <input type="text" class="form-control" value="Zip Code">
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <div class="form-select">
+                <select class="form-control">
+                  <option>Choose Miles</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2">
+            <button class="btn btn-reset w-100">RESET <i class="fa fa-play-circle" aria-hidden="true"></i></button>
+          </div>
+          <div class="col-lg-4">
+            <button class="btn btn-find w-100"><span>View all auctions</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="main_area product_listing_area">
+    <div class="container">
+      <h3 class="h3">live Auctions</h3>
+      <owl-carousel [options]="carouselOptions" [carouselClasses]="['product-carousel']">
+
+        <div class="product"  *ngFor="let p of pList; let i= index">
+          <div class="product_box">
+            <div class="image_box">
+              <img src="{{image_path + p.product_picture}}" alt="product" title="" [routerLink]="['/product-details/'+ p.id]">
+            </div>
+            <div class="contain_box">
+              <h4>Auction ID. BB31470</h4>
+              <a [routerLink]="['/product-details/'+ p.id]" routerLinkActive="active" class="link">{{p.product_name}}</a>
+              <h3>Max Bid: {{p.product_bid_starting_price}}</h3>
+              <button class="btn btn-bid" [routerLink]="['/product-details/'+ p.id]">bid now <i class="zmdi zmdi-plus-circle"></i></button>
+            </div>
+          </div>
+        </div>
+
+      </owl-carousel>
+    </div>
+  </section>
+
+  <section class="main_area upcoming_auction_area">
+    <div class="container">
+      <h2 class="h2"><strong>Upcoming Auctions</strong></h2>
+      <div class="row row-7">
+
+        <div class="col-lg-3 Auctions_Div">
+          <div class="auctions_box">
+            <a [routerLink]="['/product-details']">
+              <div class="auctions_box_image">
+                <img src="assets/images/product9.png" alt="auction image" title="">
+                <div class="mask"></div>
+              </div>
+              <div class="auctions_box_contain">
+                <h3>
+                  <strong>Auction ID. BB31470</strong>
+                  Apple 14q Core i3 7th Gen <br />- 4 GB/1
+                </h3>
+              </div>
+              <h4>Open After 5 Hours</h4>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-3 Auctions_Div">
+          <div class="auctions_box">
+            <a [routerLink]="['/product-details']">
+              <div class="auctions_box_image">
+                <img src="assets/images/product10.png" alt="auction image" title="">
+                <div class="mask"></div>
+              </div>
+              <div class="auctions_box_contain">
+                <h3>
+                  <strong>Auction ID. BB31470</strong>
+                  Ryan Howard #2 Sketch <br />Card Limited
+                </h3>
+              </div>
+              <h4>Open After 2 Days</h4>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-3 Auctions_Div">
+          <div class="auctions_box">
+            <a [routerLink]="['/product-details']">
+              <div class="auctions_box_image">
+                <img src="assets/images/product11.png" alt="auction image" title="">
+                <div class="mask"></div>
+              </div>
+              <div class="auctions_box_contain">
+                <h3>
+                  <strong>Auction ID. BB31470</strong>
+                  Invicta Akula 32349 Men's <br />Automatic Watch
+                </h3>
+              </div>
+              <h4>Open After 9 Days</h4>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-3 Auctions_Div">
+          <div class="auctions_box">
+            <a [routerLink]="['/product-details']">
+              <div class="auctions_box_image">
+                <img src="assets/images/product12.png" alt="auction image" title="">
+                <div class="mask"></div>
+              </div>
+              <div class="auctions_box_contain">
+                <h3>
+                  <strong>Auction ID. BB31470</strong>
+                  Samsung 138.71 cm <br />(55 inches)Smart LED TV
+                </h3>
+              </div>
+              <h4>Open After 30 minites</h4>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-3 Auctions_Div">
+          <div class="auctions_box">
+            <a [routerLink]="['/product-details']">
+              <div class="auctions_box_image">
+                <img src="assets/images/product13.png" alt="auction image" title="">
+                <div class="mask"></div>
+              </div>
+              <div class="auctions_box_contain">
+                <h3>
+                  <strong>Auction ID. BB31470</strong>
+                  Fasttrackazon <br />Inventory Sale
+                </h3>
+              </div>
+              <h4>Open After 5 hours</h4>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-3 Auctions_Div">
+          <div class="auctions_box">
+            <a [routerLink]="['/product-details']">
+              <div class="auctions_box_image">
+                <img src="assets/images/product14.png" alt="auction image" title="">
+                <div class="mask"></div>
+              </div>
+              <div class="auctions_box_contain">
+                <h3>
+                  <strong>Auction ID. BB31470</strong>
+                  Swarovski NIL MULTI <br />NECKLACE #1084562 BNIB
+                </h3>
+              </div>
+              <h4>Open After 2 days</h4>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-3 Auctions_Div">
+          <div class="auctions_box">
+            <a [routerLink]="['/product-details']">
+              <div class="auctions_box_image">
+                <img src="assets/images/product15.png" alt="auction image" title="">
+                <div class="mask"></div>
+              </div>
+              <div class="auctions_box_contain">
+                <h3>
+                  <strong>Auction ID. BB31470</strong>
+                  G.H. Bass Genuine Leather <br />Shoulder Bag
+                </h3>
+              </div>
+              <h4>Open After 9 days</h4>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-3 Auctions_Div">
+          <div class="auctions_box">
+            <a [routerLink]="['/product-details']">
+              <div class="auctions_box_image">
+                <img src="assets/images/product16.png" alt="auction image" title="">
+                <div class="mask"></div>
+              </div>
+              <div class="auctions_box_contain">
+                <h3>
+                  <strong>Auction ID. BB31470</strong>
+                  Ladies Leather Shoes in <br />Light Pink Size 40
+                </h3>
+              </div>
+              <h4>Open After 30 minites</h4>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  
+  <section class="main_area popular_categories_area">
+    <div class="container">
+      <h2 class="h2"><strong>POPULAR CATEGORIES</strong></h2>
+      <div class="row row-7">
+        <div class="col-lg-8">
+          <div class="row row-7">
+            <div class="col-lg-6">
+              <div class="popular_categories_one">
+                <img src="assets/images/category3.jpg" alt="category" title="">
+                <div class="contain_box">
+                  <div class="w-100">
+                    <h4>Retail <br />Inventory</h4>
+                    <a href="#" class="btn btn-primary">view more</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="popular_categories_one">
+                <img src="assets/images/category4.jpg" alt="category" title="">
+                <div class="contain_box">
+                  <div class="w-100">
+                    <h5>Building Materials</h5>
+                    <a href="#" class="btn btn-primary">view more</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="popular_categories_two">
+                <img src="assets/images/category2.jpg" alt="category" title="">
+                <div class="contain_box">
+                  <div class="w-100">
+                    <h4>Food Service <br />Equipment</h4>
+                    <a href="#" class="btn btn-primary">view more</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="popular_categories_three">
+            <img src="assets/images/category1.jpg" alt="category" title="">
+            <div class="contain_box">
+              <div class="w-100">
+                <h4>Truck Loads</h4>
+                <a href="#" class="btn btn-primary">view more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="popular_categories_four">
+            <img src="assets/images/category5.jpg" alt="category" title="">
+            <div class="contain_box">
+              <div class="w-100">
+                <h5>Women’s <br />Jewelry</h5>
+                <a href="#" class="btn btn-primary">view more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="popular_categories_four">
+            <img src="assets/images/category6.jpg" alt="category" title="">
+            <div class="contain_box">
+              <div class="w-100">
+                <h4>AIY <br />Auctions</h4>
+                <a href="#" class="btn btn-primary">view more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="main_area product_listing_area">
+    <div class="container">
+      <h3 class="h3">Close Auctions</h3>
+      <owl-carousel [options]="carouselOptions" [carouselClasses]="['product-carousel']">
+        <div class="product" *ngFor="let image of images2;let i= index">
+          <div class="product_box">
+            <div class="image_box">
+              <img src="{{image.image}}" alt="product" title="">
+            </div>
+            <div class="slide-text">
+              <div class="contain_box">
+                <h4>Auction ID. BB31470</h4>
+                <a routerLinkActive="active" class="link">Computer Electronics Blowout Auction!</a>
+                <h3>Closed / Ended: $ 100.00</h3>
+                <button class="btn btn-primary">closed</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </owl-carousel>
+    </div>
+  </section>
+
+  <app-footer></app-footer>
+
+
+</ion-content>
