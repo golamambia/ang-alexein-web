@@ -27,14 +27,15 @@ ngOnInit() {
 	this.storage.create().then(res => {
       this.getUserDetails();
     });
-    this.bidListGet();
   }
     getUserDetails() {
     this.storage.get('auctionUser').then(response => {
-    	 //console.log(response);
+    	// console.log(response);
       if (response && response.response_data && response.response_data.id) {
         this.userId = response.response_data.id;
-        console.log(this.userId);
+
+    this.bidListGet();
+        //console.log(this.userId);
       } else {
         this.userId = null;
       }

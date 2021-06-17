@@ -71,7 +71,7 @@ maxbidprice:any;
     });
        this.getGroupItem(this.idauctions);
         this.getGroup(this.idauctions);
-        this.getMaxbid();
+       // this.getMaxbid();
   }
  
    getGroupItem(id){
@@ -114,22 +114,23 @@ console.log(res);
     })
 
   }
-    getMaxbid(){
+    getMaxbid(id){
    // this.loadingShow();
     let formData = new FormData;
-    formData.append('product_id', '13');
+    formData.append('product_id', id);
     
     this.http.post(this.url + 'max-bid-by-product', formData).subscribe((res: any) => {
       if(res.status){
      // this.loadingHide();
-     // console.log(res);
-    this.maxbidprice=res.response_data;
+      console.log(res);
+   return this.maxbidprice=res.response_data;
 }else {
   //this.loadingHide();
- 
+ return 0;
               }
     }, err=>{
       //this.loadingHide();
+      return 0;
     })
 
   }

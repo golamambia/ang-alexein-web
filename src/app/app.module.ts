@@ -15,6 +15,8 @@ import { UserDefaultLayoutComponent, SellerDefaultLayoutComponent, AdminDefaultL
 import { IonicStorageModule } from '@ionic/storage-angular';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //import { AngularEditorModule } from '@kolkov/angular-editor';
+// import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+// import { CKEditorModule } from 'ng2-ckeditor';
 
 const APP_CONTAINERS = [
   UserDefaultLayoutComponent,
@@ -35,6 +37,7 @@ declare module "@angular/core" {
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(),
     FormsModule,
+    
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
@@ -44,6 +47,7 @@ declare module "@angular/core" {
     AppRoutingModule,
     IncludeModule,
     IonicStorageModule.forRoot(),
+   
     
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, WINDOW_PROVIDERS],

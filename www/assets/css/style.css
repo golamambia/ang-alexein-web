@@ -2979,3 +2979,121 @@ h2.h2:after{
     color: #ed1c24;
 }
 /*-------- login area css stop --------*/
+
+
+/*----------- item listing area start ------------*/
+.item_listing_main_area{
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-sizing: border-box
+}
+.item_box {
+    min-height: 175px;
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid #c9c9c9;
+    border-radius: 5px;
+    padding: 15px 15px 15px 175px;
+    transition: 0.5s;
+    margin: 0 0 30px;
+}
+.item_box:last-child{
+    margin: 0 0 0;
+}
+.item_box:hover {
+    border-color: transparent;
+    box-shadow: 0 0 30px rgb(201 201 201 / 70%);
+}
+.item_box .img_box {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 100%;
+    max-width: 150px;
+    height: 150px;
+    border: 1px solid #c9c9c9;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.item_box .img_box img {
+    object-fit: contain;
+    width: 80%;
+    margin: auto;
+}
+.item_box .img_box .sold {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 4px 4px;
+    background: #d8d8d8;
+    color: #000;
+    box-sizing: border-box;
+    border-radius: 2px;
+}
+.item_box h3 {
+    line-height: normal;
+    margin: 0 0 10px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #262262;
+}
+.item_box h3 .price{
+    float: right;
+    font-weight: 500;
+    line-height: 20px;
+}
+.item_box h3 .price a{
+    font-size: 20px;
+}
+.item_box p {
+    font-size: 15px;
+    font-weight: 400;
+    margin: 0 0 5px;
+}
+.item_box h4{
+    font-size: 15px;
+    font-weight: 600;
+    color: #000000;
+    margin: 0 0 0;
+}
+.item_box .number {
+    content: '';
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    border: 1px solid #c9c9c9;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: 0.5s;
+    padding: 3px 3px;
+    text-align: center;
+}
+.item_box .number i {
+    font-size: 16px;
+    font-weight: 500;
+    color: #262262;
+    transition: 0.5s;
+}
+.item_box .number p {
+    padding: 0 0;
+    margin: 0 0 0;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+    transition: 0.5s;
+}
+.item_box .number:hover{
+    border-color: #262262;
+    background: #262262;
+}
+.item_box .number:hover i, .item_box .number:hover p{
+    color: #ffffff;
+}
+/*----------- item listing area stop ------------*/

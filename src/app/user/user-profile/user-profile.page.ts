@@ -5,16 +5,22 @@ import { Storage } from '@ionic/storage-angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-
+// import * as ClassicEditor from '@ckeditor/ckeditor5-angular';
 import { filter } from 'rxjs/operators';
 declare let $: any;
-
+// import { CKEditorComponent } from 'ng2-ckeditor';
+declare const window: any;
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.page.html',
   styleUrls: ['./user-profile.page.scss'],
+
 })
 export class UserProfilePage implements OnInit {
+  // public Editor = ClassicEditor;
+
+  
+
  groupForm: FormGroup;
   submitted = false;
   url = environment.API_URL;
@@ -35,7 +41,9 @@ export class UserProfilePage implements OnInit {
    constructor(private http: HttpClient, private alertController: AlertController, private formBuilder: FormBuilder, private loadingController: LoadingController, private storage: Storage, private router: Router, private route: ActivatedRoute) {}
 
   async ngOnInit() {
-  
+  if(window.CKEDITOR) {
+           window.CKEDITOR.replace('editor');
+       }
  //this.getUserData();
 
     await  this.storage.create().then(res => {
@@ -68,7 +76,7 @@ getUserData(){
      // formData.append('password', this.loginForm.value.password);
        this.http.post(this.url + 'user-details', formData).subscribe((res: any) => {
        this.loadingHide();
-        console.log(this.buyerId);
+        //console.log(this.buyerId);
         if (res && res.status) {
           this.buyerData=res.response_data;
             this.name=res.response_data.name;

@@ -5,7 +5,7 @@ import { AlertController, LoadingController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-
+declare const window: any;
 @Component({
   selector: 'app-admin-product-add',
   templateUrl: './admin-product-add.page.html',
@@ -24,6 +24,9 @@ export class AdminProductAddPage implements OnInit {
   constructor(private alertController: AlertController, private formBuilder: FormBuilder, private http: HttpClient, private loadingController: LoadingController, private storage: Storage, private router: Router) { }
 
   async ngOnInit() {
+    if(window.CKEDITOR) {
+           window.CKEDITOR.replace('editor');
+       }
     let today = new Date('05 October 2011 14:48 UTC');
 
 console.log(today.toISOString());

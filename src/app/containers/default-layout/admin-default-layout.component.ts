@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
-
+//declare const window: any;
 @Component({
   selector: 'admin-app-dashboard',
   templateUrl: './admin-default-layout.component.html'
@@ -19,6 +19,9 @@ export class AdminDefaultLayoutComponent {
   }
 
   async ngOnInit() {
+    // if(window.CKEDITOR) {
+    //        window.CKEDITOR.replace('editor');
+    //    }
     await this.storage.create().then(res => {
       this.getUserDetails();
     });

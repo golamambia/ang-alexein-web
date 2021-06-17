@@ -68,7 +68,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label>Long Description</label>
-                <textarea formControlName="product_long_description" class="form-control"
+                <textarea name="editor" formControlName="product_long_description" class="form-control"
                 [ngClass]="{ 'is-invalid': submitted && f.product_long_description.errors }" placeholder="Product long description"></textarea>
                 <div *ngIf="submitted && f.product_long_description.errors" class="invalid-feedback">
                   <div *ngIf="f.product_long_description.errors.required">Long description is required</div>

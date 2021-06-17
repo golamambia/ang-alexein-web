@@ -16,20 +16,19 @@
    <div class="container">
 
     <div class="item_listing_main_area">
-        
-        
+               
         
         <div class="item_box" *ngFor="let p of product_deltail">
             <div class="img_box">
                 <a routerLink="/product-details/{{p.id}}">
-                    <img src="assets/images/product2.jpg" alt="product">
+                    <img src="{{image_path + p.product_picture}}" alt="product">
                     <div class="sold">Sold Qty 1</div>
                 </a>
             </div>
             <h3>
                 {{p.product_name}}
                 <div class="price">
-                    MSRP: {{maxbidprice}} <a href="javascript:void(0)" data-toggle="tooltip" title="Hooray!"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
+                    MSRP: {{getMaxbid(p.id)}} <a href="javascript:void(0)" data-toggle="tooltip" title="Hooray!"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
                 </div>
             </h3>
             <p>{{p.product_short_description}}</p>
