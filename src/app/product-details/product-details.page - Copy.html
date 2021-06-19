@@ -1,0 +1,219 @@
+<ion-content>
+  <app-header></app-header>
+
+  <section class="main_area product_details_area">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+
+          <div class="product_image_box">
+
+
+            <div class="exzoom clearfix" id="exzoom">
+              <div class="exzoom_img_box">
+                <ul class='exzoom_img_ul'>
+                  <li><img src="{{image_path + product_deltail?.product_picture}}" /></li>
+                  <!-- <li><img src="assets/images/product-details1.png" /></li>
+                  <li><img src="assets/images/product-details1.png" /></li>
+                  <li><img src="assets/images/product-details1.png" /></li> -->
+                </ul>
+              </div>
+              <div class="exzoom_nav"></div>
+              <p class="exzoom_btn">
+                <a href="javascript:void(0);" class="exzoom_prev_btn"><i class="fa fa-angle-up"
+                    aria-hidden="true"></i></a>
+                <a href="javascript:void(0);" class="exzoom_next_btn"><i class="fa fa-angle-down"
+                    aria-hidden="true"></i></a>
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="col-lg-6">
+          <div class="product_details_contain">
+            <div class="contain_box">
+              <h1>
+                {{product_deltail?.product_name}}
+                <strong>Auction ID : BB31470</strong>
+              </h1>
+            </div>
+            <div class="contain_box">
+              <h3>max bid : <strong>{{product_deltail?.product_bid_starting_price}}</strong></h3>
+              <h4><strong>End Date & Time :</strong> March 5th, 2021 8:30 AM EST</h4>
+              <h4><strong>Location :</strong> {{product_deltail?.product_location}}</h4>
+            </div>
+            <div class="contain_box">
+              <h5>highlights :</h5>
+              <p>{{product_deltail?.product_important_highlights}}
+              </p>
+              <a href="javascript:void(0);" class="btn btn-primary"  (click)="triggerModal(modalData)">bid now <i class="zmdi zmdi-plus-circle"></i></a>
+            </div>
+          </div>
+        </div>
+        <ng-template #modalData let-modal >
+  <div class="modal-header" style="background: #3092A6;
+    border-radius: 5px 5px 0 0;
+    color: #FFF;">
+    <h4 class="modal-title" id="modal-basic-title">Your Bid</h4>
+   <!--  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button> -->
+  </div>
+  <div class="modal-body text-center" id="modalBody_Text"><span style="font-size:1.5rem;margin-bottom:15px;">Your Bid Will Be</span> <br> <span style="font-weight:bold;font-size:1.5rem;">{{product_deltail?.product_bid_starting_price}}!</span> <br><br> Pickup Location: <strong>{{product_deltail?.product_location}}</strong> <br> Are you sure?</div>
+  <table align="center">
+          <tbody><tr>
+            <td>
+              <div class="text-center modal-footer m-t-10">
+                <button type="button" class="btn btn-primary" (click)="bidNow(product_deltail)">YES</button>
+                  <button type="button" class="btn btn-default" (click)="modal.close('Save click')">NO</button>
+                </div>
+              </td>
+            </tr>
+        </tbody></table>
+  <!-- <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close</button>
+  </div> -->
+</ng-template>
+
+        <div class="col-lg-12">
+
+          <div class="product_description_area">
+
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#home">description</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#menu1">acution terms</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#menu2">bid increment</a>
+              </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div id="home" class="tab-pane active">
+                <div class="product_description">
+                  {{product_deltail?.product_long_description}}
+                </div>
+              </div>
+              <div id="menu1" class="tab-pane fade">
+                <div class="product_description">
+                  <div class="description_box">
+                    <div class="number">1.</div>
+                    <h3><strong>Notes Information : </strong>THIS IS AN INTERNET ONLY AUCTION.</h3>
+                  </div>
+                  <div class="description_box">
+                    <div class="number">2.</div>
+                    <h3><strong>Auction Closing Date : </strong>The first 5 items will end at the ending time of the
+                      auction, then 5 items per minute thereafter until the last item in auction.</h3>
+                  </div>
+                  <div class="description_box">
+                    <div class="number">3.</div>
+                    <h3><strong>Inspection : </strong>Monday 4:00pm-6:00pm EST & Tuesday-Friday 1:00pm-6:00pm EST</h3>
+                  </div>
+                  <div class="description_box">
+                    <div class="number">4.</div>
+                    <h3><strong>Eligible Pickup Dates (All Pickup Times Are Local) :</strong></h3>
+                    <ul class="mt-2">
+                      <li>March 9th, 2021 10:00 AM - 6:00 PM</li>
+                      <li>March 9th, 2021 10:00 AM - 6:00 PM</li>
+                      <li>March 9th, 2021 10:00 AM - 6:00 PM</li>
+                      <li>March 9th, 2021 10:00 AM - 6:00 PM</li>
+                    </ul>
+                  </div>
+                  <div class="description_box">
+                    <div class="number">5.</div>
+                    <h3><strong>Please Note : </strong>A valid, State or Federal issued ID is required to pick up all
+                      purchases. There are no refunds for items not picked up on time. If you cannot make the removal,
+                      you need to send someone on your behalf to pick up for you with their own ID and the printed
+                      invoice! *Be aware if the information of the person picking up does not match the information on
+                      the receipt, a phone call or text may be placed to you to verify the identity of the person
+                      picking up, or further credit card verification such as presentation of the card charged for large
+                      or multiple purchases. All forms of ID must be presented in person.</h3>
+                  </div>
+                  <div class="description_box">
+                    <div class="number">6.</div>
+                    <h3><strong>Pickup Location : </strong>Edwin Moses,835 Edwin C. Moses Boulevard,Dayton,OH,45417</h3>
+                  </div>
+                </div>
+              </div>
+              <div id="menu2" class="tab-pane fade">
+                <div class="product_description">
+                  <div class="description_box">
+                    <div class="number">1.</div>
+                    <h3><strong>Notes Information : </strong>THIS IS AN INTERNET ONLY AUCTION.</h3>
+                  </div>
+                  <div class="description_box">
+                    <div class="number">2.</div>
+                    <h3><strong>Auction Closing Date : </strong>The first 5 items will end at the ending time of the
+                      auction, then 5 items per minute thereafter until the last item in auction.</h3>
+                  </div>
+                  <div class="description_box">
+                    <div class="number">3.</div>
+                    <h3><strong>Inspection : </strong>Monday 4:00pm-6:00pm EST & Tuesday-Friday 1:00pm-6:00pm EST</h3>
+                  </div>
+                  <div class="description_box">
+                    <div class="number">4.</div>
+                    <h3><strong>Eligible Pickup Dates (All Pickup Times Are Local) :</strong></h3>
+                    <ul class="mt-2">
+                      <li>March 9th, 2021 10:00 AM - 6:00 PM</li>
+                      <li>March 9th, 2021 10:00 AM - 6:00 PM</li>
+                      <li>March 9th, 2021 10:00 AM - 6:00 PM</li>
+                      <li>March 9th, 2021 10:00 AM - 6:00 PM</li>
+                    </ul>
+                  </div>
+                  <div class="description_box">
+                    <div class="number">5.</div>
+                    <h3><strong>Please Note : </strong>A valid, State or Federal issued ID is required to pick up all
+                      purchases. There are no refunds for items not picked up on time. If you cannot make the removal,
+                      you need to send someone on your behalf to pick up for you with their own ID and the printed
+                      invoice! *Be aware if the information of the person picking up does not match the information on
+                      the receipt, a phone call or text may be placed to you to verify the identity of the person
+                      picking up, or further credit card verification such as presentation of the card charged for large
+                      or multiple purchases. All forms of ID must be presented in person.</h3>
+                  </div>
+                  <div class="description_box">
+                    <div class="number">6.</div>
+                    <h3><strong>Pickup Location : </strong>Edwin Moses,835 Edwin C. Moses Boulevard,Dayton,OH,45417</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!------- product details area stop -------->
+
+
+  <!----- product listing two area start ----->
+  <section class="main_area product_listing_area mt-0">
+    <div class="container">
+      <h2 class="h2 mb-2"><strong>Related Auctions</strong></h2>
+      <owl-carousel [options]="carouselOptions" [carouselClasses]="['product-carousel']">
+        <div class="product" *ngFor="let image of images;let i= index">
+          <div class="product_box">
+            <div class="image_box">
+              <img src="{{image.image}}" alt="product" title="" [routerLink]="['/product-details']">
+            </div>
+            <div class="contain_box">
+              <h4>Auction ID. BB31470</h4>
+              <a [routerLink]="['/product-details']" routerLinkActive="active" class="link">OnePlus Band 1.1'' AMOLED Display</a>
+              <h3>Max Bid: $150.00</h3>
+              <button class="btn btn-bid" [routerLink]="['/product-details']">bid now <i class="zmdi zmdi-plus-circle"></i></button>
+            </div>
+          </div>
+        </div>
+      </owl-carousel>
+    </div>
+  </section>
+
+  <app-footer></app-footer>
+</ion-content>

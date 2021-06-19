@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { image_path } from '../../environments/environment';
 import swal from 'sweetalert2';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import * as moment from 'moment';
 declare var $: any; 
 
 @Component({
@@ -58,6 +59,11 @@ product_deltail:any;
 closeModal: string;
 modal:any;
 buyerId:any;
+maxbidamt:any;
+groupdetails:any;
+gid:any;
+bid_status:any=1;
+htmlStr:any;
   constructor(private modalService: NgbModal,private alertController: AlertController,
    private formBuilder: FormBuilder, 
     private http: HttpClient, private loadingController: LoadingController, 
@@ -70,12 +76,11 @@ buyerId:any;
     });
        this.sub =this.route.params.subscribe(params => {
   if (params) {
-  
+  //console.log(params);
     this.id=params['id'];
-    
+    this.gid=params['gid'];
     if(params['id']){
-       this.getProductById(params['id']);
-       this.getProductBid(params['id']);
+       
     }
    
   }
@@ -92,19 +97,25 @@ buyerId:any;
       this.buyerId = null;
     });
   }
+  ionViewWillEnter(){
+    this.getProductById(this.id);
+       this.getProductBid(this.id);
+       this.getGroup();
+  }
    getProductById(id){
     //this.loadingShow();
     let formData = new FormData;
     formData.append('product_id', id);
     
     this.http.post(this.url + 'product-single', formData).subscribe((res: any) => {
+      //console.log(res);
       if(res.status){
       //this.loadingHide();
-console.log(res);
+      //this.getGroup();
     this.product_deltail=res.response_data;
 }else {
   //this.loadingHide();
-  this.presentAlert('Error!', '', 'Server error, please try again later');
+  this.presentAlert('Error!', '', 'Server error, please try again later1');
               }
     }, err=>{
       //this.loadingHide();
@@ -119,11 +130,74 @@ console.log(res);
     this.http.post(this.url + 'max-bid-by-product', formData).subscribe((res: any) => {
       if(res.status){
      // this.loadingHide();
-      console.log(res);
-    //this.product_deltail=res.response_data;
+     // console.log(res);
+    this.maxbidamt=res.response_data;
 }else {
   //this.loadingHide();
-  this.presentAlert('Error!', '', 'Server error, please try again later');
+//this.presentAlert('Error!', '', 'Server error, please try again later2');
+              }
+    }, err=>{
+      //this.loadingHide();
+    })
+
+  }
+    getGroup(){
+   // this.loadingShow();
+    let formData = new FormData;
+    formData.append('group_id', this.gid);
+    
+    this.http.post(this.url + 'group-details', formData).subscribe((res: any) => {
+      //console.log(res);
+      if(res.status){
+     // this.loadingHide();
+     // console.log(res);
+     let m=moment(res.response_data.end_date, "YYYY-MM-DD").format('MMM D, YYYY') +' ' + res.response_data.end_time;
+         // this.time_count(m);
+        let countDownDate2 = new Date(m).getTime();
+    
+      let now2 = new Date().getTime();
+
+      // Find the distance between now and the count down date
+      let distance2 = countDownDate2 - now2;
+ if (distance2 < 0) {
+   this.htmlStr="Expired";
+        document.getElementById("demo").innerHTML = "Expired";
+        this.bid_status=0;
+      }
+     
+    this.groupdetails=res.response_data;
+    let countDownDate = new Date(m).getTime();
+
+    // Update the count down every 1 second
+    let x = setInterval(function () {
+
+      // Get todays date and time
+      let now = new Date().getTime();
+
+      // Find the distance between now and the count down date
+      let distance = countDownDate - now;
+      // Time calculations for days, hours, minutes and seconds
+      let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      //console.log(now, "now", "countDownDate", countDownDate, "distance", distance, "days", days);
+
+      // Output the result in an element with id="demo"
+      document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+      // If the count down is over, write some text 
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "Expired";
+        this.bid_status=0;
+      }
+    }, 1000);
+
+}else {
+  //this.loadingHide();
+  this.presentAlert('Error!', '', 'Server error, please try again later2');
               }
     }, err=>{
       //this.loadingHide();
@@ -178,7 +252,7 @@ async loadingShow() {
   if(this.buyerId){
           this.http.post(this.url + 'bid-add', formData).subscribe((res:any)=>{
                //this.res = res;
-    console.log(res);
+   // console.log(res);
     if(res.status==true){
       this.modalService.dismissAll();
      this.presentAlert('Success!', '', res.message);
@@ -196,6 +270,36 @@ this.loadingHide();
         }
            
      
+  }
+   time_count(countDownDate1){
+    let countDownDate = new Date(countDownDate1).getTime();
+
+    // Update the count down every 1 second
+    let x = setInterval(function () {
+
+      // Get todays date and time
+      let now = new Date().getTime();
+
+      // Find the distance between now and the count down date
+      let distance = countDownDate - now;
+      // Time calculations for days, hours, minutes and seconds
+      let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      //console.log(now, "now", "countDownDate", countDownDate, "distance", distance, "days", days);
+
+      // Output the result in an element with id="demo"
+      document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+      // If the count down is over, write some text 
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "Expired";
+        this.bid_status=0;
+      }
+    }, 1000);
   }
   carouselOptions = {
     loop: true,

@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { image_path } from '../../../environments/environment';
+declare const window: any;
 @Component({
   selector: 'app-admin-product-update',
   templateUrl: './admin-product-update.page.html',
@@ -32,7 +33,10 @@ sellList:any;
     private storage: Storage, private router: Router,public route: ActivatedRoute) { }
 
   async ngOnInit() {
-    
+     if(window.CKEDITOR) {
+           window.CKEDITOR.replace('editor');
+
+       }
     this.productForm = this.formBuilder.group({
       seller_id: ['', [Validators.required]],
       product_name: ['', [Validators.required]],
@@ -72,6 +76,7 @@ sellList:any;
    // console.log(res);
      if(res.status){
        this.product_picture=res.response_data.product_picture;
+        window.CKEDITOR.instances['editor'].setData(res.response_data.product_long_description);
        this.productForm.patchValue({
        seller_id:res.response_data.user_id,
       product_name:res.response_data.product_name,
@@ -135,7 +140,8 @@ getMultiImage(){
   get f() { return this.productForm.controls; }
 
   submit() {
-  
+ // let lol= window.CKEDITOR.instances['editor'].getData();
+ // console.log(lol);
     this.submitted = true;
     if (this.productForm.invalid) {
       return;
@@ -146,7 +152,7 @@ getMultiImage(){
       formData.append('product_name', this.productForm.value.product_name);
       formData.append('product_picture', this.image);
       formData.append('product_short_description', this.productForm.value.product_short_description);
-      formData.append('product_long_description', this.productForm.value.product_long_description);
+      formData.append('product_long_description', window.CKEDITOR.instances['editor'].getData());
       formData.append('product_important_highlights', this.productForm.value.product_important_highlights);
       formData.append('product_location', this.productForm.value.product_location);
       formData.append('product_bid_starting_price', this.productForm.value.product_bid_starting_price);

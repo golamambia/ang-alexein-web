@@ -34,7 +34,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/live-auctions/live-auctions.module').then(m => m.LiveAuctionsPageModule)
   },
   {
-    path: 'product-details/:id',
+    path: 'product-details/:id/:gid',
     loadChildren: () => import('./product-details/product-details.module').then(m => m.ProductDetailsPageModule)
   },
   {
@@ -42,7 +42,7 @@ const routes: Routes = [
     loadChildren: () => import('./group-details/product-details.module').then(m => m.ProductDetailsPageModule)
   },
   {
-    path: 'auctionItems',
+    path: 'auctionItems/:id',
     loadChildren: () => import('./group-items/group-items.module').then(m => m.GroupItemsPageModule)
   },
    

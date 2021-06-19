@@ -33,8 +33,27 @@ export class LiveAuctionsPage implements OnInit {
     this.productList();
    // this.lol();
   }
-  
- time_count(countDownDate1,idno){
+
+  productList(){
+    let formData = new FormData;
+    formData.append('', '');
+    this.http.post(this.url + 'group-all-list', formData).subscribe((res: any)=>{
+     // console.log(res);
+      if(res && res.status){
+        this.pList = res.response_data;
+      }else{
+        this.pList = null;
+      }
+    })
+  }
+  logScrolling(event) {
+    if (event.detail.scrollTop > 100) {
+      $('.header_bottom').addClass("fix");
+    } else {
+      $('.header_bottom').removeClass("fix");
+    }
+  }
+    time_count(countDownDate1,id){
     let countDownDate = new Date(countDownDate1).getTime();
 
     // Update the count down every 1 second
@@ -53,36 +72,15 @@ export class LiveAuctionsPage implements OnInit {
       //console.log(now, "now", "countDownDate", countDownDate, "distance", distance, "days", days);
 
       // Output the result in an element with id="demo"
-     document.getElementById("demo"+idno).innerHTML = days + "d " + hours + "h "
+      document.getElementById("demo"+id).innerHTML = days + "d " + hours + "h "
         + minutes + "m " + seconds + "s ";
+
       // If the count down is over, write some text 
       if (distance < 0) {
         clearInterval(x);
-        //return "EXPIRED";
-        document.getElementById("demo"+idno).innerHTML = "EXPIRED";
+        document.getElementById("demo"+id).innerHTML = "Expired";
       }
-     
     }, 1000);
-     //return idno;
-  }
-  productList(){
-    let formData = new FormData;
-    formData.append('', '');
-    this.http.post(this.url + 'group-all-list', formData).subscribe((res: any)=>{
-      console.log(res);
-      if(res && res.status){
-        this.pList = res.response_data;
-      }else{
-        this.pList = null;
-      }
-    })
-  }
-  logScrolling(event) {
-    if (event.detail.scrollTop > 100) {
-      $('.header_bottom').addClass("fix");
-    } else {
-      $('.header_bottom').removeClass("fix");
-    }
   }
 
 }

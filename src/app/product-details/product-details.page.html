@@ -35,19 +35,26 @@
             <div class="contain_box">
               <h1>
                 {{product_deltail?.product_name}}
-                <strong>Auction ID : BB31470</strong>
+                <strong>Auction : {{groupdetails?.auction_cg_number}}</strong>
               </h1>
             </div>
             <div class="contain_box">
-              <h3>max bid : <strong>{{product_deltail?.product_bid_starting_price}}</strong></h3>
-              <h4><strong>End Date & Time :</strong> March 5th, 2021 8:30 AM EST</h4>
+              <h3>max bid : <strong>{{maxbidamt}}</strong></h3>
+               <h3>Bidder : <strong></strong></h3>
+              <h4><strong style="color: #0e0790">Auction status  : </strong> <strong id="demo" ></strong></h4>
+              <h4><strong>End Date & Time :</strong>{{groupdetails?.end_date | date:'MMM dd, yyyy'  + '     ' + groupdetails?.end_time}}</h4>
               <h4><strong>Location :</strong> {{product_deltail?.product_location}}</h4>
             </div>
             <div class="contain_box">
               <h5>highlights :</h5>
               <p>{{product_deltail?.product_important_highlights}}
               </p>
-              <a href="javascript:void(0);" class="btn btn-primary"  (click)="triggerModal(modalData)">bid now <i class="zmdi zmdi-plus-circle"></i></a>
+              <div *ngIf="buyerId">
+                <a *ngIf="bid_status==1" href="javascript:void(0);" class="btn btn-primary"  (click)="triggerModal(modalData)">bid now <i class="zmdi zmdi-plus-circle"></i></a>
+              </div>
+               <div *ngIf="!buyerId">
+              <a *ngIf="bid_status==1" href="javascript:void(0);" [routerLink]="['/login']" class="btn btn-primary"  >Login to bid <i class="zmdi zmdi-plus-circle"></i></a>
+            </div>
             </div>
           </div>
         </div>
@@ -87,100 +94,29 @@
               <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#menu1">acution terms</a>
               </li>
-              <li class="nav-item">
+             <!--  <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#menu2">bid increment</a>
-              </li>
+              </li> -->
             </ul>
 
             <!-- Tab panes -->
             <div class="tab-content">
               <div id="home" class="tab-pane active">
                 <div class="product_description">
-                  {{product_deltail?.product_long_description}}
+                   <p [innerHtml]="groupdetails?.product_long_description"></p>
+                
                 </div>
               </div>
               <div id="menu1" class="tab-pane fade">
                 <div class="product_description">
-                  <div class="description_box">
-                    <div class="number">1.</div>
-                    <h3><strong>Notes Information : </strong>THIS IS AN INTERNET ONLY AUCTION.</h3>
-                  </div>
-                  <div class="description_box">
-                    <div class="number">2.</div>
-                    <h3><strong>Auction Closing Date : </strong>The first 5 items will end at the ending time of the
-                      auction, then 5 items per minute thereafter until the last item in auction.</h3>
-                  </div>
-                  <div class="description_box">
-                    <div class="number">3.</div>
-                    <h3><strong>Inspection : </strong>Monday 4:00pm-6:00pm EST & Tuesday-Friday 1:00pm-6:00pm EST</h3>
-                  </div>
-                  <div class="description_box">
-                    <div class="number">4.</div>
-                    <h3><strong>Eligible Pickup Dates (All Pickup Times Are Local) :</strong></h3>
-                    <ul class="mt-2">
-                      <li>March 9th, 2021 10:00 AM - 6:00 PM</li>
-                      <li>March 9th, 2021 10:00 AM - 6:00 PM</li>
-                      <li>March 9th, 2021 10:00 AM - 6:00 PM</li>
-                      <li>March 9th, 2021 10:00 AM - 6:00 PM</li>
-                    </ul>
-                  </div>
-                  <div class="description_box">
-                    <div class="number">5.</div>
-                    <h3><strong>Please Note : </strong>A valid, State or Federal issued ID is required to pick up all
-                      purchases. There are no refunds for items not picked up on time. If you cannot make the removal,
-                      you need to send someone on your behalf to pick up for you with their own ID and the printed
-                      invoice! *Be aware if the information of the person picking up does not match the information on
-                      the receipt, a phone call or text may be placed to you to verify the identity of the person
-                      picking up, or further credit card verification such as presentation of the card charged for large
-                      or multiple purchases. All forms of ID must be presented in person.</h3>
-                  </div>
-                  <div class="description_box">
-                    <div class="number">6.</div>
-                    <h3><strong>Pickup Location : </strong>Edwin Moses,835 Edwin C. Moses Boulevard,Dayton,OH,45417</h3>
-                  </div>
+                  <p [innerHtml]="groupdetails?.terms"></p>
                 </div>
               </div>
-              <div id="menu2" class="tab-pane fade">
+              <!-- <div id="menu2" class="tab-pane fade">
                 <div class="product_description">
-                  <div class="description_box">
-                    <div class="number">1.</div>
-                    <h3><strong>Notes Information : </strong>THIS IS AN INTERNET ONLY AUCTION.</h3>
-                  </div>
-                  <div class="description_box">
-                    <div class="number">2.</div>
-                    <h3><strong>Auction Closing Date : </strong>The first 5 items will end at the ending time of the
-                      auction, then 5 items per minute thereafter until the last item in auction.</h3>
-                  </div>
-                  <div class="description_box">
-                    <div class="number">3.</div>
-                    <h3><strong>Inspection : </strong>Monday 4:00pm-6:00pm EST & Tuesday-Friday 1:00pm-6:00pm EST</h3>
-                  </div>
-                  <div class="description_box">
-                    <div class="number">4.</div>
-                    <h3><strong>Eligible Pickup Dates (All Pickup Times Are Local) :</strong></h3>
-                    <ul class="mt-2">
-                      <li>March 9th, 2021 10:00 AM - 6:00 PM</li>
-                      <li>March 9th, 2021 10:00 AM - 6:00 PM</li>
-                      <li>March 9th, 2021 10:00 AM - 6:00 PM</li>
-                      <li>March 9th, 2021 10:00 AM - 6:00 PM</li>
-                    </ul>
-                  </div>
-                  <div class="description_box">
-                    <div class="number">5.</div>
-                    <h3><strong>Please Note : </strong>A valid, State or Federal issued ID is required to pick up all
-                      purchases. There are no refunds for items not picked up on time. If you cannot make the removal,
-                      you need to send someone on your behalf to pick up for you with their own ID and the printed
-                      invoice! *Be aware if the information of the person picking up does not match the information on
-                      the receipt, a phone call or text may be placed to you to verify the identity of the person
-                      picking up, or further credit card verification such as presentation of the card charged for large
-                      or multiple purchases. All forms of ID must be presented in person.</h3>
-                  </div>
-                  <div class="description_box">
-                    <div class="number">6.</div>
-                    <h3><strong>Pickup Location : </strong>Edwin Moses,835 Edwin C. Moses Boulevard,Dayton,OH,45417</h3>
-                  </div>
+                  
                 </div>
-              </div>
+              </div> -->
             </div>
 
           </div>

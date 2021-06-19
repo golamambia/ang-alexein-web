@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { image_path } from '../../../environments/environment';
-
+declare const window: any;
 @Component({
   selector: 'app-seller-group-add',
   templateUrl: './seller-group-add.page.html',
@@ -23,7 +23,7 @@ export class SellerGroupAddPage implements OnInit {
   titleText: any = "Add new group";
   id: any;
   url = environment.API_URL;
-sellList:any;
+  sellList:any;
   categoryList:any;
   image: any;
   imageLoaded = false;
@@ -32,6 +32,13 @@ sellList:any;
   constructor(private http: HttpClient, private alertController: AlertController, private formBuilder: FormBuilder, private loadingController: LoadingController, private storage: Storage, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
+    if(window.CKEDITOR) {
+           window.CKEDITOR.replace('editor');
+           window.CKEDITOR.replace('editor2');
+           window.CKEDITOR.replace('editor3');
+           window.CKEDITOR.replace('editor4');
+
+       }
     this.groupForm = this.formBuilder.group({
        seller_id: ['', [Validators.required]],
      auction_cg_number: ['', [Validators.required]],
@@ -87,7 +94,7 @@ sellList:any;
   }
 
   getGroupById(id){
-    this.loadingShow();
+    //this.loadingShow();
     let formData = new FormData;
     formData.append('group_id', id);
     this.http.post(this.url + 'group-details', formData).subscribe((res: any) => {
@@ -95,10 +102,18 @@ sellList:any;
       this.loadingHide();
       this.titleText = 'Update Group';
       this.titleText1 = 'Update group';
+      if(res.status){
        this.product_picture=res.response_data.category_group_image;
+        window.CKEDITOR.instances['editor'].setData(res.response_data.description);
+        window.CKEDITOR.instances['editor2'].setData(res.response_data.highlights);
+        window.CKEDITOR.instances['editor3'].setData(res.response_data.notes);
+        window.CKEDITOR.instances['editor4'].setData(res.response_data.terms);
       this.groupForm.patchValue(res.response_data);
       this.groupForm.patchValue({'seller_id': res.response_data.creator_id});
+      this.groupForm.patchValue({'start_date_and_time': res.response_data.start_date + 'T' + res.response_data.start_time});
       this.groupForm.patchValue({'end_date_and_time': res.response_data.end_date + 'T' + res.response_data.end_time});
+    }
+
     }, err=>{
       this.loadingHide();
     })
@@ -137,11 +152,12 @@ sellList:any;
       formData.append('end_time', (this.groupForm.value.end_date_and_time).split("T")[1]);
       formData.append('location', this.groupForm.value.location);
       formData.append('zip', this.groupForm.value.zip);
-      formData.append('highlights', this.groupForm.value.highlights);
-      formData.append('description', this.groupForm.value.description);
+      formData.append('description', window.CKEDITOR.instances['editor'].getData());
+      formData.append('highlights', window.CKEDITOR.instances['editor2'].getData());
+      formData.append('notes', window.CKEDITOR.instances['editor3'].getData());
+      formData.append('terms', window.CKEDITOR.instances['editor4'].getData());
       formData.append('category_group_image', this.image);
-      formData.append('notes', this.groupForm.value.notes);
-      formData.append('terms', this.groupForm.value.terms);
+      
 
       if(this.id){
         formData.append('group_id', this.id);

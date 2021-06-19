@@ -104,35 +104,7 @@ itemTotal:any;
       this.buyerId = null;
     });
   }
-  time_count(countDownDate1){
-    let countDownDate = new Date(countDownDate1).getTime();
 
-    // Update the count down every 1 second
-    let x = setInterval(function () {
-
-      // Get todays date and time
-      let now = new Date().getTime();
-
-      // Find the distance between now and the count down date
-      let distance = countDownDate - now;
-      // Time calculations for days, hours, minutes and seconds
-      let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      //console.log(now, "now", "countDownDate", countDownDate, "distance", distance, "days", days);
-
-      // Output the result in an element with id="demo"
-      document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-        + minutes + "m " + seconds + "s ";
-
-      // If the count down is over, write some text 
-      if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("demo").innerHTML = "EXPIRED";
-      }
-    }, 1000);
-  }
    getProductById(id){
     //this.loadingShow();
     let formData = new FormData;
@@ -246,8 +218,37 @@ this.loadingHide();
   }
     gotoauctionitem(id){
   
-    this.navCtrl.navigateForward('/auctionItems?idauctions='+id);
+    this.navCtrl.navigateForward('/auctionItems/'+id);
     
+  }
+    time_count(countDownDate1){
+    let countDownDate = new Date(countDownDate1).getTime();
+
+    // Update the count down every 1 second
+    let x = setInterval(function () {
+
+      // Get todays date and time
+      let now = new Date().getTime();
+
+      // Find the distance between now and the count down date
+      let distance = countDownDate - now;
+      // Time calculations for days, hours, minutes and seconds
+      let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      //console.log(now, "now", "countDownDate", countDownDate, "distance", distance, "days", days);
+
+      // Output the result in an element with id="demo"
+      document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+      // If the count down is over, write some text 
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "Expired";
+      }
+    }, 1000);
   }
   carouselOptions = {
     loop: true,

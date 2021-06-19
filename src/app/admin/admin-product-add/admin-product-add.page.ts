@@ -78,7 +78,7 @@ console.log(today.toISOString());
       formData.append('product_name', this.productForm.value.product_name);
       formData.append('product_picture', this.image);
       formData.append('product_short_description', this.productForm.value.product_short_description);
-      formData.append('product_long_description', this.productForm.value.product_long_description);
+      formData.append('product_long_description', window.CKEDITOR.instances['editor'].getData());
       formData.append('product_important_highlights', this.productForm.value.product_important_highlights);
       formData.append('product_location', this.productForm.value.product_location);
       formData.append('product_bid_starting_price', this.productForm.value.product_bid_starting_price);

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -40,7 +41,7 @@ idauctions:any;
 group_details:any;
 maxbidprice:any;
   constructor(private modalService: NgbModal,private alertController: AlertController,
-   private formBuilder: FormBuilder, 
+   private formBuilder: FormBuilder, public navCtrl: NavController,
     private http: HttpClient, private loadingController: LoadingController, 
     private storage: Storage, private router: Router,public route: ActivatedRoute) { }
 
@@ -54,8 +55,19 @@ maxbidprice:any;
    this.route.queryParams.subscribe(params => {
   if (params) {
     //let queryParams = params;
-    this.idauctions=params.idauctions;;
+   // this.idauctions=params.idauctions;
     //console.log(this.idauctions);
+  }
+});
+  this.route.params.subscribe(params => {
+  if (params) {
+  
+    this.idauctions=params['id'];
+    
+    // if(params['id']){
+   
+    // }
+   
   }
 });
        this.storage.get('auctionUser').then(response => {
@@ -79,7 +91,7 @@ maxbidprice:any;
     let formData = new FormData;
     formData.append('group_id', id);
     
-    this.http.post(this.url + 'group-item-get', formData).subscribe((res: any) => {
+    this.http.post(this.url + 'product-list-by-group-filter', formData).subscribe((res: any) => {
       if(res.status){
       //this.loadingHide();
       // let countDownDate1 = new Date("Jun 10, 2021 22:05").getTime();
@@ -123,10 +135,12 @@ console.log(res);
       if(res.status){
      // this.loadingHide();
       console.log(res);
-   return this.maxbidprice=res.response_data;
+       document.getElementById("pric"+id).innerHTML = res.response_data;
+  // return this.maxbidprice=res.response_data;
 }else {
   //this.loadingHide();
  return 0;
+  document.getElementById("pric"+id).innerHTML = res.response_data;
               }
     }, err=>{
       //this.loadingHide();
@@ -134,37 +148,7 @@ console.log(res);
     })
 
   }
-   time_count(countDownDate1,idno){
-    let countDownDate = new Date(countDownDate1).getTime();
-
-    // Update the count down every 1 second
-    let x = setInterval(function () {
-
-      // Get todays date and time
-      let now = new Date().getTime();
-
-      // Find the distance between now and the count down date
-      let distance = countDownDate - now;
-      // Time calculations for days, hours, minutes and seconds
-      let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      //console.log(now, "now", "countDownDate", countDownDate, "distance", distance, "days", days);
-
-      // Output the result in an element with id="demo"
-     document.getElementById("demo"+idno).innerHTML = days + "d " + hours + "h "
-        + minutes + "m " + seconds + "s ";
-      // If the count down is over, write some text 
-      if (distance < 0) {
-        clearInterval(x);
-        //return "EXPIRED";
-        document.getElementById("demo"+idno).innerHTML = "EXPIRED";
-      }
-     
-    }, 1000);
-     //return idno;
-  }
+   
   async presentAlert(header, subHeader, message) {
     const alert = await this.alertController.create({
       header,
@@ -231,6 +215,40 @@ this.loadingHide();
         }
            
      
+  }
+  gotoproductitem(id){
+  //alert(1);
+    this.navCtrl.navigateForward('/product-details/'+id+'/'+this.idauctions);
+    
+  }
+    time_count(countDownDate1,rowno){
+    let countDownDate = new Date(countDownDate1).getTime();
+
+    // Update the count down every 1 second
+    let x = setInterval(function () {
+
+      // Get todays date and time
+      let now = new Date().getTime();
+
+      // Find the distance between now and the count down date
+      let distance = countDownDate - now;
+      // Time calculations for days, hours, minutes and seconds
+      let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      //console.log(now, "now", "countDownDate", countDownDate, "distance", distance, "days", days);
+
+      // Output the result in an element with id="demo"
+      document.getElementById("demo"+rowno).innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+      // If the count down is over, write some text 
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo"+rowno).innerHTML = "Expired";
+      }
+    }, 1000);
   }
   carouselOptions = {
     loop: true,

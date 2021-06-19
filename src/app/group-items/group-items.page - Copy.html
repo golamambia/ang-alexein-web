@@ -1,0 +1,73 @@
+<ion-content>
+  <app-header></app-header>
+<section class="product_search_area">
+  <div class="container">
+    <h1>Item List</h1>
+    <!-- <ul class="pagger_link">
+      <li><a href="#">home</a></li>
+      <li class="active">Item List</li>
+    </ul> -->
+  </div>
+</section>
+<!----- product search area stop ----->
+
+ <!------- product listing area start ------->
+ <section class="main_area product_listing_area">
+   <div class="container">
+
+    <div class="item_listing_main_area">
+               
+        
+        <div class="item_box" *ngFor="let p of product_deltail">
+            <div class="img_box" routerLink="/product-details/13">
+                <a herf="javascript:void(0)" (click)="gotoauctionitem(p.id)">
+                    <img src="{{image_path + p.product_picture}}" alt="product">
+                    <div class="sold">Sold Qty 1</div>
+                </a>
+            </div>
+            <h3 (click)="gotoauctionitem(p.id)">
+                {{p.product_name}}
+                <div class="price">
+                    MSRP: <b id="pric{{p.id}}"></b>{{getMaxbid(p.id)}} <a href="javascript:void(0)" data-toggle="tooltip" title="Hooray!"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
+                </div>
+            </h3>
+            <p>{{p.product_short_description}}</p>
+            <!-- <p>GRY1072322</p> -->
+            <h4>Unit Price: {{p.product_bid_starting_price}}</h4>
+            <p><strong style="color: #0e0790">Auction status : </strong> <strong id="demo{{p.id}}">{{time_count1(group_details?.end_date | date:'MMM dd, yyyy'  + '     ' + group_details?.end_time,p.id)}}</strong></p>
+            <a href="javascript:void(0)" class="number">
+                <i class="fa fa-user-o" aria-hidden="true"></i>
+                <p>10</p>
+            </a>
+        </div>
+       
+        
+        
+    </div>
+
+     <!------ pagination area start ----->
+     <!-- <div class="pagination_area mt-5">
+       <p>Showing 1 to 10 of 120 Auctions</p>
+       <ul class="pagination">
+         <li><a href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+         <li class="active"><a href="#">1</a></li>
+         <li><a href="#">2</a></li>
+         <li><a href="#">3</a></li>
+         <li><a href="#">4</a></li>
+         <li><a href="#">...</a></li>
+         <li><a href="#">10</a></li>
+         <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+       </ul>
+       <div class="go_page">
+         <input type="text" class="form-control" value="">
+         <p>/ 10</p>
+         <button class="btn btn-primary">go</button>
+       </div>
+     </div> -->
+     <!------ pagination area stop ----->
+
+   </div>
+ </section>
+
+  <app-footer></app-footer>
+</ion-content>

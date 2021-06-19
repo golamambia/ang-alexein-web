@@ -17,24 +17,29 @@
 
     <div class="item_listing_main_area">
                
-        
+        <!--  <div class="item_box" *ngIf="product_deltail">
+          No item found
+         </div> -->
         <div class="item_box" *ngFor="let p of product_deltail">
-            <div class="img_box">
-                <a routerLink="/product-details/{{p.id}}">
+            <div class="img_box"  (click)="gotoproductitem(p.product_id)" >
+                <a herf="javascript:void(0)" >
                     <img src="{{image_path + p.product_picture}}" alt="product">
-                    <div class="sold">Sold Qty 1</div>
+                    <!-- <div class="sold">Sold Qty 1</div> -->
                 </a>
             </div>
-            <h3>
+            <h3 (click)="gotoproductitem(p.product_id)">
                 {{p.product_name}}
-                <div class="price">
-                    MSRP: {{getMaxbid(p.id)}} <a href="javascript:void(0)" data-toggle="tooltip" title="Hooray!"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
-                </div>
+               <!--  <div class="price">
+                    MSRP: <b id="pric{{p.id}}"></b>
+                 
+
+                    <a href="javascript:void(0)" data-toggle="tooltip" title="Hooray!"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
+                </div> -->
             </h3>
             <p>{{p.product_short_description}}</p>
             <!-- <p>GRY1072322</p> -->
             <h4>Unit Price: {{p.product_bid_starting_price}}</h4>
-            <p><strong style="color: #0e0790">This Auction closes in  : </strong> <strong id="demo{{p.id}}">{{time_count(group_details?.end_date | date:'MMM dd, yyyy'  + '     ' + group_details?.end_time,p.id)}}</strong></p>
+            <p><strong style="color: #0e0790">Auction status : </strong> <strong id="demo{{p.id}}">{{time_count(group_details?.end_date | date:'MMM dd, yyyy'  + '     ' + group_details?.end_time,p.id)}}</strong></p>
             <a href="javascript:void(0)" class="number">
                 <i class="fa fa-user-o" aria-hidden="true"></i>
                 <p>10</p>

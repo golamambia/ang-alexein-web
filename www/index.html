@@ -26,12 +26,41 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
   <link href="/assets/css/responsive.css" rel="stylesheet">
-  
+
+  <!--   <script src="https://cdn.ckeditor.com/4.16.1/full-all/ckeditor.js"></script>
+  <script> CKEDITOR.config.forcePasteAsPlainText = true; </script> -->
+  <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+              <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script>
+        var app = angular.module('myApp', []);
+
+        //This is global functions for every controler.
+        app.run(function ($rootScope, $window) {
+            // $rootScope.myGlobalFunction = function () {
+            //     //TODO : your custom code here.
+            //     $window.alert('I am global function. :)');
+            //     console.log("I am global function. :)");
+            // };
+             //$window.alert('I am global function. :)');
+
+          //window.CKEDITOR.replace('editor');
+       
+        });
+
+        //This is controller for accessing to global functions.
+        app.controller('MainCtrl', function ($scope) {
+            //TODO: your controller code here.
+        });
+    </script>
 <link rel="stylesheet" href="styles.css"></head>
 
-<body class="leftmenuopen">
+<body class="leftmenuopen" ng-app="myApp" ng-controller="MainCtrl">
   <app-root></app-root>
 <script src="runtime-es2015.js" type="module"></script><script src="runtime-es5.js" nomodule defer></script><script src="polyfills-es5.js" nomodule defer></script><script src="polyfills-es2015.js" type="module"></script><script src="scripts.js" defer></script><script src="vendor-es2015.js" type="module"></script><script src="vendor-es5.js" nomodule defer></script><script src="main-es2015.js" type="module"></script><script src="main-es5.js" nomodule defer></script></body>
-
+<!--  <script>
+                        CKEDITOR.replace( 'editor1' );
+                </script> -->
+               
+    
 
 </html>

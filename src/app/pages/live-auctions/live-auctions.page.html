@@ -51,13 +51,13 @@
                 </a>
               </div>
               <div class="contain_box">
-                <h4>Auction ID. {{p.auction_cg_number}}</h4>
-                <a [routerLink]="['/auction-details/'+ p.id]" class="link">{{p.product_name}}</a>
+                <h4>Auction. {{p.auction_cg_number}}</h4>
+                <a [routerLink]="['/auction-details/'+ p.id]" class="link">{{p.category_group_name}}</a>
                 <!-- <h3>Max Bid: {{p.product_bid_starting_price}}</h3> -->
                 <p class="auctionLocation"><i class="zmdi zmdi-pin"></i>
                                           {{p.location}} 
                                         </p>
-                                        <p class="auctionEnd" ><i class="zmdi zmdi-timer"></i><strong>Close in :</strong><strong id="demo{{p.id}}">{{time_count(p.end_date | date:'MMM dd, yyyy'  + '     ' + p.end_time,p.id)}}</strong> </p>
+                                        <p class="auctionEnd" ><!-- <i class="zmdi zmdi-timer"></i> --> <strong>Auction status :</strong><strong id="demo{{p.id}}">{{time_count(p.end_date | date:'MMM dd, yyyy'  + '     ' + p.end_time,p.id)}}</strong> </p>
                                         <p class="auctionEnd"><strong>End Time :</strong>{{p.end_date | date:'MMM dd, yyyy'  + '     ' + p.end_time}} </p>
                 <!-- <button [routerLink]="['/product-details/'+ p.id]" class="btn btn-bid">bid now <i class="zmdi zmdi-plus-circle"></i></button> -->
               </div>
@@ -71,7 +71,7 @@
       </div>
 
       <!------ pagination area start ----->
-      <div class="pagination_area mt-5">
+    <!--   <div class="pagination_area mt-5">
         <p>Showing 1 to 10 of 120 Auctions</p>
         <ul class="pagination">
           <li><a href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
@@ -84,7 +84,7 @@
           <p>/ 10</p>
           <button class="btn btn-primary">go</button>
         </div>
-      </div>
+      </div> -->
       <!------ pagination area stop ----->
 
     </div>
