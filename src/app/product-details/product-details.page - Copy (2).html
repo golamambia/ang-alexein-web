@@ -50,7 +50,7 @@
               <p>{{product_deltail?.product_important_highlights}}
               </p>
               <div *ngIf="buyerId">
-                <a *ngIf="bid_status==1" href="javascript:void(0);" class="btn btn-primary"  (click)="triggerModal(modalData,product_deltail?.id)">bid now <i class="zmdi zmdi-plus-circle"></i></a>
+                <a *ngIf="bid_status==1" href="javascript:void(0);" class="btn btn-primary"  (click)="triggerModal(modalData)">bid now <i class="zmdi zmdi-plus-circle"></i></a>
               </div>
                <div *ngIf="!buyerId">
               <a *ngIf="bid_status==1" href="javascript:void(0);" [routerLink]="['/login']" class="btn btn-primary"  >Login to bid <i class="zmdi zmdi-plus-circle"></i></a>
@@ -67,15 +67,7 @@
       <span aria-hidden="true">×</span>
     </button> -->
   </div>
-  <div class="modal-body text-center" id="modalBody_Text"><span style="font-size:1.5rem;margin-bottom:15px;">Max Bid</span> 
-    <br> <span style="font-weight:bold;font-size:1.5rem;">{{maxbidamt}}</span><br><input type="text" name="" placeholder="Enter bid amount" [(ngModel)]="bid_amount" [ngModelOptions]="{standalone: true}" (keypress)="onlyNumberKey($event)" maxlength="11"> <br><span style="color: #d21b1b;
-    font-size: 12px;
-    font-weight: 700;
-    margin-left: 5px;" [innerHTML]="errorbid"></span><br> Pickup Location: <strong>{{product_deltail?.product_location}}</strong> <br> Are you sure?
-
-
-
-  </div>
+  <div class="modal-body text-center" id="modalBody_Text"><span style="font-size:1.5rem;margin-bottom:15px;">Your Bid Will Be</span> <br> <span style="font-weight:bold;font-size:1.5rem;">{{product_deltail?.product_bid_starting_price}}!</span> <br><br> Pickup Location: <strong>{{product_deltail?.product_location}}</strong> <br> Are you sure?</div>
   <table align="center">
           <tbody><tr>
             <td>

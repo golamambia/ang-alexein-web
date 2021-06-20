@@ -64,6 +64,8 @@ groupdetails:any;
 gid:any;
 bid_status:any=1;
 htmlStr:any;
+bid_amount:any;
+errorbid:any='';
   constructor(private modalService: NgbModal,private alertController: AlertController,
    private formBuilder: FormBuilder, 
     private http: HttpClient, private loadingController: LoadingController, 
@@ -225,7 +227,9 @@ async loadingShow() {
   async loadingHide() {
     await this.loading.dismiss();
   }
-  triggerModal(content) {
+  triggerModal(content,productid) {
+    this.errorbid="";
+    this.getProductBid(productid);
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
       this.closeModal = `Closed with: ${res}`;
     }, (res) => {
@@ -248,12 +252,15 @@ async loadingShow() {
     //formData.append('id', '9');
     formData.append('user_id', this.buyerId);
     formData.append('product_id', c.id);
-    formData.append('bid_amount', c.product_bid_starting_price);
+    formData.append('bid_amount', this.bid_amount);
   if(this.buyerId){
+    if(this.bid_amount>0){
           this.http.post(this.url + 'bid-add', formData).subscribe((res:any)=>{
                //this.res = res;
    // console.log(res);
     if(res.status==true){
+        this.getProductBid(c.id);
+        this.bid_amount="";
       this.modalService.dismissAll();
      this.presentAlert('Success!', '', res.message);
        //this.dataList();
@@ -263,6 +270,11 @@ this.loadingHide();
   this.presentAlert('Error!', '', 'Server error, please try again later');
     }
     });
+
+}else{
+this.errorbid="Please enter bid amount";
+  //this.presentAlert('Error!', '', 'Please enter bid amount');
+}
         }else{
           this.modalService.dismissAll();
      this.loadingHide();
@@ -301,6 +313,9 @@ this.loadingHide();
       }
     }, 1000);
   }
+    onlyNumberKey(event:any) {
+    return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57;
+}
   carouselOptions = {
     loop: true,
     autoplay: false,
